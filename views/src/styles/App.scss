@@ -1,0 +1,26 @@
+@import 'colors';
+@import 'mixins';
+@import 'basic';
+
+
+body {
+  overflow: hidden;
+}
+
+.header {
+height: 60px;
+background-color: crimson;
+}
+
+.main {
+  position: absolute;
+  font-size:10em;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+
+.canvas {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;}

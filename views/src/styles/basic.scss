@@ -1,0 +1,245 @@
+body{
+  font-family: 'Oswald', sans-serif;
+  background: $white;
+  overflow-x: hidden;
+  font-size: 0.9em;
+  margin:0;
+}
+
+h1 {
+  @include texte1($s:1.2em,$w:400,$ls:0.2em,$lh:30px);
+}
+
+h2 {
+  @include texte1($s:2em,$lh:1em);
+}
+
+h3 {
+  @include texte2($w:500,$s:1.2em);
+}
+
+h4 {
+  @include texte2(1em,300);
+}
+
+h5 {
+  @include texte2(0.8em,500);
+  margin: 0;
+}
+
+h6 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 100;
+  font-size: 1em;
+}
+
+hr {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+section {
+  position: relative;
+  height: 100vh;
+
+  h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+  }
+
+  h1 {
+    margin-bottom:10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    line-height: 1;
+    color: $main;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $white;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+fieldset {
+  border : 0
+}
+
+button {
+  @include button;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+input {
+  @include input
+}
+
+form {
+  @include form;
+}
+
+.table {
+  @include table;
+}
+
+.texte1 {
+  @include texte1;
+}
+
+.texte2 {
+  @include texte2;
+}
+
+
+.flex_r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex_c {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.flex_nw {
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+
+.flex_w {
+  flex-wrap: wrap;
+}
+
+.flex_wr {
+  flex-wrap: wrap-reverse;
+}
+
+.flex_baseline {
+  align-items: baseline;
+}
+
+.flex_center {
+  align-items: center;
+  justify-content: center;
+}
+
+$basis: 10,15,20,25,30,40,50,60,70,80,90;
+
+@each $a in $basis {
+  .w#{$a} {
+    flex-basis: $a * 1%;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 3vh;
+  right: 30px;
+
+  i {
+    font-size: 1.5em;
+    vertical-align: middle;
+    padding: 5px;
+  }
+}
+
+.close2 {
+  position: absolute;
+  top: 10vh;
+  right: 30px;
+
+  i {
+    font-size: 1.5em;
+    vertical-align: middle;
+    padding: 5px;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.fullview {
+  width: 100vw;
+}
+
+.fullsize {
+  width: 100%;
+  height: 100%;
+}
+
+.megafull {
+  width: 100vw;
+  height: 100vh;
+}
+
+.width80 {
+  width: 80%;
+}
+
+.half {
+  width: 50%;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.givemespace {
+  margin: 15px;
+}
+.givemelittlespace {
+  margin: 10px;
+}
+
+.givemespace-hori {
+  margin: 15px 0;
+}
+
+.accent {
+  background-color: $accent;
+}
+
+.accent2 {
+  background-color: $accent2;
+}
+
+.accent3 {
+  background-color: $accent3;
+}
+
+.accent4 {
+  background-color: $accent4;
+}
+
+.noir {
+  background-color: black;
+}
+
+.hide {
+  top: -90px;
+}
