@@ -11,6 +11,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-three-fiber": "^4.1.1",
+    "socket.io-client": "^2.3.0",
     "three": "^0.115.0",
     "use-cannon": "^0.4.3"
   },

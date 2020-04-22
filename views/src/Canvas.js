@@ -8,6 +8,8 @@ import Cube from './3d/Cube'
 import Plane from './3d/Plane'
 import Plane2 from './3d/Plane2'
 import Jeep from './3d/Jeep'
+
+import Socket from './Socket'
 //import Controls from './render/Controls'
 extend({OrbitControls})
 
@@ -38,6 +40,10 @@ const Canvas3D = ({canvas}) => {
             <Jeep rotation={[0,Math.PI,0]} scale={[0.40,0.5,0.5]} position={[6,3,-1]} />
           </Suspense>
       </Canvas> : null
+    }
+    {
+      canvas === "c3" ?
+<Socket></Socket> : null
     }
 
   </div>);
