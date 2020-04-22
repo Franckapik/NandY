@@ -1,80 +1,45 @@
-import React, {useRef, useState} from 'react'
-import {Canvas, useFrame} from 'react-three-fiber'
-import {Physics, usePlane, useBox} from 'use-cannon'
+import React, {useState, Suspense} from 'react'
+import {Canvas, extend, Dom} from 'react-three-fiber'
+import {Physics} from 'use-cannon'
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+//import Scene from './render/Scene'
+import Cube from './3d/Cube'
+//import BoxHover from './3d/BoxHover'
+import Plane from './3d/Plane'
+import Plane2 from './3d/Plane2'
+import Jeep from './3d/Jeep'
+//import Controls from './render/Controls'
+extend({OrbitControls})
 
-function Box(props) {
-  // This reference will give us direct access to the mesh
-  const mesh = useRef()
-
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
-
-  // Rotate mesh every frame, this is outside of React without overhead
-  useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
-
-  return (<mesh {...props} ref={mesh}
-    onClick={e => setActive(!active)}
-    onPointerOver={e => setHover(true)}
-    onPointerOut={e => setHover(false)}>
-    <boxBufferGeometry attach="geometry" args={[1, 1, 1]}/>
-    <meshStandardMaterial attach="material" color={hovered
-        ? 'hotpink'
-        : 'orange'}/>
-  </mesh>)
-}
-
-function Plane(props) {
-  const [ref] = usePlane(() => ({ rotation: [ -Math.PI / 2, 0, 0 ], ...props }))
-  return (<mesh ref={ref} receiveShadow="receiveShadow">
-    <planeBufferGeometry attach="geometry" args={[1009, 1000]}/>
-    <shadowMaterial attach="material" color="#171717"/>
-  </mesh>)
-}
-
-function Cube(props) {
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
-  const [ref] = useBox(() => ({
-    mass: 0.02,
-    position: [
-      0, 5, 0
-    ],
-    rotation: [
-      0.4, 0.2, 0.5
-    ],
-    ...props
-  }))
-  return (<mesh receiveShadow="receiveShadow" castShadow="castShadow" ref={ref}
-    onClick={e => setActive(!active)} onPointerOver={e => setHover(true)} onPointerOut={e => setHover(false)}>
-    <boxBufferGeometry attach="geometry"/>
-    <meshLambertMaterial attach="material" color={hovered
-        ? 'hotpink'
-        : 'orange'}/>
-  </mesh>)
-}
-
-const Canvas3D = () => {
+const Canvas3D = ({canvas}) => {
   return (<div className="canvas">
-    <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{
-        alpha: false
-      }} camera={{
-        position: [
-          0, 10, 0
-        ],
-        fov: 50
-      }}>
-      <color attach="background" args={['lightblue']}/>
-      <hemisphereLight intensity={0.35}/>
-      <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={2} castShadow="castShadow"/>
-      <Physics>
-        <Plane/>
-        <Cube/>
-        <Cube position={[0, 10, -2]}/>
-        <Cube position={[0, 20, -2]}/>
-      </Physics>
-    </Canvas>,
+    {
+      canvas === "c1" ?
+      <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 10, 0 ], fov: 50 }}>
+        <color attach="background" args={['lightblue']}/>
+        <hemisphereLight intensity={0.35}/>
+        <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={2} castShadow="castShadow"/>
+        <Physics>
+          <Plane/>
+          <Cube/>
+          <Cube position={[0, 10, -2]}/>
+          <Cube position={[0, 20, -2]}/>
+        </Physics>
+      </Canvas> : null
+    }
+    {
+      canvas === "c2" ?
+      <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 10, 8, 10 ], fov: 50 }}>
+        <color attach="background" args={['darkslateblue']}/>
+        <spotLight position={[6, 40, -1]} angle={0.3} intensity={0.8} castShadow="castShadow"/>
+        <gridHelper args={100,100} />
+          <Plane2/>
+          <Suspense fallback={<Dom>loading...</Dom>}>
+            <Jeep rotation={[0,Math.PI,0]} scale={[0.40,0.5,0.5]} position={[6,3,-1]} />
+          </Suspense>
+      </Canvas> : null
+    }
+
   </div>);
 }
 
