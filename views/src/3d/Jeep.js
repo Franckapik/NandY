@@ -13,16 +13,7 @@ export default function Model(props) {
   const group = useRef()
   const { nodes, materials, animations } = useLoader(GLTFLoader, jeepModel)
   const [increase, setIncrease] = useState(true);
-  useFrame(state => {
-    let maxY = 5;
-    let minY = 2;
-    let y = group.current.position.y;
-    if (y < maxY && increase) {
-      group.current.position.y += 0.010;
-    } else if (y === maxY) {
-      console.log("now decrease");
-    }
-  })
+    useFrame(state => (group.current.position.y = Math.sin(state.clock.getElapsedTime()) * 2 + 4))
   return (
     <group ref={group} {...props} dispose={null}>
       <scene name="Scene">
