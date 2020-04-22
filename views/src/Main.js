@@ -1,10 +1,14 @@
 import React from 'react';
 import './styles/App.scss';
 
-function Main() {
+function Main({setCanvas}) {
   return (<div className="main">
-Que passa
-<p>por la calle</p>
+<h1>Nature & You</h1>
+<ul>
+  <li className="cursor" onClick={()=> setCanvas("c1")}>Physics</li>
+  <li className="cursor" onClick={()=> setCanvas("c2")}>Animation</li>
+  <li className="cursor" onClick={()=> setCanvas("c3")}>Interaction</li>
+</ul>
   </div>);
 }
 
