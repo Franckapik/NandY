@@ -1,5 +1,5 @@
 import React, {useState, Suspense, useEffect} from 'react'
-import {Canvas, extend, Dom} from 'react-three-fiber'
+import {Canvas, extend, Dom, useFrame} from 'react-three-fiber'
 import {Physics} from 'use-cannon'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 //import Scene from './render/Scene'
@@ -9,11 +9,45 @@ import Plane from './3d/Plane'
 import Plane2 from './3d/Plane2'
 import Jeep from './3d/Jeep'
 
+import useStore from './store/store'
+import {useHotkeys} from 'react-hotkeys-hook'
+
 import {socket} from './Socket'
-//import Controls from './render/Controls'
+
+
 extend({OrbitControls})
 
+
+const Counter= (props) => {
+
+  const { count, inc, dec } = useStore()
+  useHotkeys('a', () => inc());
+
+  return (
+    <div>
+      <span>{count}</span>
+      <button onClick={inc}>up</button>
+      <button onClick={dec}>down</button>
+    </div>
+  )
+}
+const KeyControls= (props) => {
+
+  const { backw, forw, left, right } = useStore()
+  useHotkeys('d', () => forw());
+  useHotkeys('q', () => backw());
+  useHotkeys('z', () => left());
+  useHotkeys('x', () => right());
+
+  return (
+<Dom>Controls : Q, D, Z, W</Dom>
+  )
+}
+
 const Canvas3D = ({canvas}) => {
+
+const {x} = useStore()
+
 
 const [connected, setConnected] = useState(false);
 const [players, setPlayers] = useState([]);
@@ -22,8 +56,8 @@ useEffect(() => {
    socket.emit('event', 'Bonjour');
    socket.on('connected', (data) => {setConnected(true); setPlayers(data) });
    socket.on('disconnect', (data) => {setPlayers(data) });
-
 }, []);
+
 
   return (<div className="canvas">
     {
@@ -63,11 +97,25 @@ useEffect(() => {
           <Cube/>
           <Dom>      <div>
           { connected ? (
-               <p>Utilisateurs connectés : {players.map((a, i)=> {return (<p>{a}</p>)})}</p>
+               <div><p>Utilisateurs connectés : {players.length ? players.map((a, i)=> {return (<p>{a}</p>)}) : "aucun"}</p>
+               <p><Counter></Counter></p></div>
           ) : (
                <p>Not connected yet...</p>
           ) }
       </div></Dom>
+        </Physics>
+      </Canvas> : null
+    }
+    {
+      canvas === "c4" ?
+      <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 10, 0 ], fov: 50 }}>
+        <color attach="background" args={['lightblue']}/>
+        <hemisphereLight intensity={0.35}/>
+        <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={2} castShadow="castShadow"/>
+        <KeyControls></KeyControls>
+        <Physics>
+          <Plane/>
+          <Cube />
         </Physics>
       </Canvas> : null
     }

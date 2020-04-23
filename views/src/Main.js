@@ -8,7 +8,9 @@ function Main({setCanvas}) {
   <li className="cursor" onClick={()=> setCanvas("c1")}>Physics</li>
   <li className="cursor" onClick={()=> setCanvas("c2")}>Animation</li>
   <li className="cursor" onClick={()=> setCanvas("c3")}>Interaction</li>
-</ul>
+  <li className="cursor" onClick={()=> setCanvas("c4")}>Clavier</li>
+
+  </ul>
   </div>);
 }
 
