@@ -1,6 +1,7 @@
 @import 'colors';
 @import 'mixins';
 @import 'basic';
+@import 'dat';
 
 
 body {
@@ -12,7 +13,7 @@ height: 60px;
 background-color: crimson;
 }
 
-.main {
+.mainDom {
   position: absolute;
   font-size:8em;
   z-index: 1;

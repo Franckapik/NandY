@@ -40,13 +40,17 @@ const KeyControls= (props) => {
   useHotkeys('x', () => right());
 
   return (
-<Dom>Controls : Q, D, Z, W</Dom>
+<Dom>Controls : Q, D, Z, X</Dom>
   )
 }
+
+
 
 const Canvas3D = ({canvas}) => {
 
 const {x} = useStore()
+
+
 
 
 const [connected, setConnected] = useState(false);
@@ -119,6 +123,7 @@ useEffect(() => {
         </Physics>
       </Canvas> : null
     }
+
 
   </div>);
 }
