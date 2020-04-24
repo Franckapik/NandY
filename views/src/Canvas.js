@@ -1,8 +1,9 @@
-import React, {useState, Suspense, useEffect} from 'react'
+import React, {useState, Suspense, useEffect, useRef} from 'react'
 import {Canvas, extend, Dom, useFrame} from 'react-three-fiber'
 import {Physics} from 'use-cannon'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 //import Scene from './render/Scene'
+import Controls from './render/Controls'
 import Cube from './3d/Cube'
 //import BoxHover from './3d/BoxHover'
 import Plane from './3d/Plane'
@@ -12,10 +13,13 @@ import Jeep from './3d/Jeep'
 import useStore from './store/store'
 import {useHotkeys} from 'react-hotkeys-hook'
 
+import Game from './3d/Game'
 import {socket} from './Socket'
 
 
 extend({OrbitControls})
+
+
 
 
 const Counter= (props) => {
@@ -49,9 +53,6 @@ const KeyControls= (props) => {
 const Canvas3D = ({canvas}) => {
 
 const {x} = useStore()
-
-
-
 
 const [connected, setConnected] = useState(false);
 const [players, setPlayers] = useState([]);
@@ -120,6 +121,18 @@ useEffect(() => {
         <Physics>
           <Plane/>
           <Cube />
+        </Physics>
+      </Canvas> : null
+    }
+    {
+      canvas === "c5" ?
+      <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 100, 0 ], fov: 50 }}>
+        <color attach="background" args={['lightblue']}/>
+        <spotLight position={[10, 200, 10]} angle={1} penumbra={0} intensity={1} castShadow="castShadow"/>
+        <KeyControls></KeyControls>
+        <Controls />
+        <Physics>
+          <Game ></Game>
         </Physics>
       </Canvas> : null
     }

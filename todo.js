@@ -3,12 +3,13 @@ v0.0.1
 Socket.io mis en place (interaction ok)
 Mis en place d'un store avec zustand
 Controls au clavier
+Mise en place d'un DAT
 
 ----------------------
 Freestyle : il semblerait que cela soit compromis
 Mise en place des différentes routes
 Ecriture d'un jeu rapide où l'on a une carte importée de blender avec des animations.
-On doit déplacer un objet vers une lignée d'arrivée avant une autre personne. : collisions, déplacements complexes : avant-droit, gestion des positions dans le store avec des échanges verticaux via les props ou le store, système de points, dat-gui pour react, liens vers les routes du site..
+On doit déplacer un objet vers une lignée d'arrivée avant une autre personne. : collisions, déplacements complexes : avant-droit, système de points, dat-gui pour react, liens vers les routes du site..
 
 Sauvegarde du serveur ?
 Mise en place du logo
