@@ -11,10 +11,16 @@ import Plane2 from './3d/Plane2'
 import Jeep from './3d/Jeep'
 
 import useStore from './store/store'
-import {useHotkeys} from 'react-hotkeys-hook'
+
+import J1 from './3d/J1'
+import Sol from './3d/Sol'
+
 
 import Game from './3d/Game'
+import Game_old from './3d/Game_old'
 import {socket} from './Socket'
+
+import Keyboard from './render/Keyboard'
 
 
 extend({OrbitControls})
@@ -25,7 +31,6 @@ extend({OrbitControls})
 const Counter= (props) => {
 
   const { count, inc, dec } = useStore()
-  useHotkeys('a', () => inc());
 
   return (
     <div>
@@ -35,18 +40,7 @@ const Counter= (props) => {
     </div>
   )
 }
-const KeyControls= (props) => {
 
-  const { backw, forw, left, right } = useStore()
-  useHotkeys('d', () => forw());
-  useHotkeys('q', () => backw());
-  useHotkeys('z', () => left());
-  useHotkeys('x', () => right());
-
-  return (
-<Dom>Controls : Q, D, Z, X</Dom>
-  )
-}
 
 
 
@@ -117,7 +111,7 @@ useEffect(() => {
         <color attach="background" args={['lightblue']}/>
         <hemisphereLight intensity={0.35}/>
         <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={2} castShadow="castShadow"/>
-        <KeyControls></KeyControls>
+        <Keyboard></Keyboard>
         <Physics>
           <Plane/>
           <Cube />
@@ -126,13 +120,13 @@ useEffect(() => {
     }
     {
       canvas === "c5" ?
-      <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 100, 0 ], fov: 50 }}>
+      <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 5, 40 ], fov: 50 }}>
         <color attach="background" args={['lightblue']}/>
         <spotLight position={[10, 200, 10]} angle={1} penumbra={0} intensity={1} castShadow="castShadow"/>
-        <KeyControls></KeyControls>
+        <Keyboard></Keyboard>
         <Controls />
         <Physics>
-          <Game ></Game>
+          <Game></Game>
         </Physics>
       </Canvas> : null
     }

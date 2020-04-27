@@ -3,6 +3,8 @@ import Canvas3D from './Canvas';
 import Header from './Header';
 import Main from './Main';
 import {Dat} from './store/store';
+import FPSStats from "react-fps-stats";
+
 
 function App() {
   const [canvas, setCanvas] = useState("c5");
@@ -10,6 +12,7 @@ function App() {
   return (<div>
     <Header></Header>
     <Dat />
+    <FPSStats />
     <Main setCanvas={setCanvas}></Main>
     <Canvas3D canvas={canvas}></Canvas3D>
   </div>);

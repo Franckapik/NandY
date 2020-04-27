@@ -5,14 +5,16 @@ import DatGui, { DatBoolean, DatColor, DatNumber, DatString } from 'react-dat-gu
 
 const [useStore, api] = create((set, get) => ({
   count: 2,
-  x: 1,
+  x: 0,
   y: 1,
   inc: () => set(state => ({ count: state.count + 1 })),
   dec: () => set(state => ({ count: state.count - 1 })),
-  forw: () => set(state => ({ x: state.x + 0.1 })),
-  backw: () => set(state => ({ x: state.x - 0.1 })),
-  left: () => set(state => ({ y: state.y - 0.1 })),
-  right: () => set(state => ({ y: state.y + 0.1 })),
+  forw: () => set(state => ({ x: state.x + 1 })),
+  backw: () => set(state => ({ x: state.x - 1 })),
+  left: () => set(state => ({ y: state.y - 1 })),
+  right: () => set(state => ({ y: state.y + 1 })),
+  stop: () => set(state => ({ x: 0 })),
+
 }))
 
 const Dat = (props) => {
@@ -27,12 +29,8 @@ const Dat = (props) => {
                 </DatGui>
 
               </div>
-
-
       )
-
 }
-
 
 export default useStore;
 export {Dat};
