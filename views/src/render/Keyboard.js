@@ -12,16 +12,35 @@ const KeyControls= (props) => {
     if (event.type=== 'keydown') {
       forw()
     } else {
-      stop()
+      //stop()
+    }
+  }, {keyup : true, keydown: true});
+  useHotkeys('down', (event, handler) => {
+    if (event.type=== 'keydown') {
+      backw()
+    } else {
+      //stop()
+    }
+  }, {keyup : true, keydown: true});
+  useHotkeys('left', (event, handler) => {
+    if (event.type=== 'keydown') {
+      left()
+    } else {
+      //stop()
+    }
+  }, {keyup : true, keydown: true});
+  useHotkeys('right', (event, handler) => {
+    if (event.type=== 'keydown') {
+      right()
+    } else {
+      //stop()
     }
   }, {keyup : true, keydown: true});
   useHotkeys('q', () => backw());
   useHotkeys('z', () => left());
   useHotkeys('x', () => right());
 
-  return (
-<Dom>Controls : Q, D, Z, X</Dom>
-  )
+  return null
 }
 
 export default KeyControls

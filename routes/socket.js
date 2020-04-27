@@ -16,6 +16,7 @@ const socketIO = () => {
     socket.on('event', (data)=> {
       console.log(data)
       players.push(socket.id)
+      socket.emit('id', socket.id)
       io.emit('connected', players)
 
     })

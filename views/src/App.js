@@ -3,7 +3,9 @@ import Canvas3D from './Canvas';
 import Header from './Header';
 import Main from './Main';
 import {Dat} from './store/store';
+import {ServerLink} from './store/store';
 import FPSStats from "react-fps-stats";
+import Dashboard from './Dashboard'
 
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
     <Header></Header>
     <Dat />
     <FPSStats />
+    <ServerLink />
+    <Dashboard />
     <Main setCanvas={setCanvas}></Main>
     <Canvas3D canvas={canvas}></Canvas3D>
   </div>);

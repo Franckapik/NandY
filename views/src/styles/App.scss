@@ -15,13 +15,22 @@ background-color: crimson;
 
 .mainDom {
   position: absolute;
-  font-size:8em;
+  font-size:2em;
   z-index: 1;
   height: 100%;
   width: 40%;
   ul {
     font-size: 0.4em;
   }
+}
+
+.dashbd {
+  text-align: center;
+}
+
+.Keyboard {
+position: fixed;
+top : 10px;
 }
 
 .canvas {

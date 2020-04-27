@@ -7,8 +7,12 @@ import Controls from './render/Controls'
 import Cube from './3d/Cube'
 //import BoxHover from './3d/BoxHover'
 import Plane from './3d/Plane'
+import Joueur from './3d/Joueur'
 import Plane2 from './3d/Plane2'
 import Jeep from './3d/Jeep'
+import Wall from './3d/Wall'
+import create from 'zustand'
+
 
 import useStore from './store/store'
 
@@ -18,7 +22,6 @@ import Sol from './3d/Sol'
 
 import Game from './3d/Game'
 import Game_old from './3d/Game_old'
-import {socket} from './Socket'
 
 import Keyboard from './render/Keyboard'
 
@@ -46,17 +49,7 @@ const Counter= (props) => {
 
 const Canvas3D = ({canvas}) => {
 
-const {x} = useStore()
-
-const [connected, setConnected] = useState(false);
-const [players, setPlayers] = useState([]);
-
-useEffect(() => {
-   socket.emit('event', 'Bonjour');
-   socket.on('connected', (data) => {setConnected(true); setPlayers(data) });
-   socket.on('disconnect', (data) => {setPlayers(data) });
-}, []);
-
+const {x, connected, players, id} = useStore()
 
   return (<div className="canvas">
     {
@@ -120,13 +113,22 @@ useEffect(() => {
     }
     {
       canvas === "c5" ?
-      <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 5, 40 ], fov: 50 }}>
+      <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 10, 5 ], fov: 50 }}>
         <color attach="background" args={['lightblue']}/>
         <spotLight position={[10, 200, 10]} angle={1} penumbra={0} intensity={1} castShadow="castShadow"/>
-        <Keyboard></Keyboard>
         <Controls />
+        <Keyboard></Keyboard>
         <Physics>
-          <Game></Game>
+          <Plane rotation = {[-Math.PI/2, 0 ,0]}/>
+        { /* <Joueur position={[ 0.5, 3, 2 ]} color={"red"} />*/}
+          <Joueur position={[ -0.5, 3, 2 ]} color={"blue"} />
+          <Wall position={[ 0, 0.25, 0 ]}/>
+          <Wall y={0.5} />
+          <Wall y={1} />
+          <Wall y={1.5} />
+          <Wall y={0} />
+          <Wall y={-0.5} />
+          <Wall y={-2} />
         </Physics>
       </Canvas> : null
     }
