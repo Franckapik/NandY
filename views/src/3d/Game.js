@@ -14,10 +14,9 @@ export default function Model(props) {
   const group = useRef()
   const { nodes, materials} = useLoader(GLTFLoader, game)
 
-  const [joueur, apiPlayer] = useBox(() => ({mass: 5, position: [ 0, 5, 0 ], onCollide: e => {console.log("Hey")}}))
+  const [joueur, apiPlayer] = useBox(() => ({mass: 5, position: [ 0, 5, 10 ], onCollide: e => {console.log("Hey")}}))
   const [mur, apiMur] = useBox(() => ({type:"static", position: [-15.49, 1, 0]}))
   const [ground, apiGround] = useBox(() => ({type:"static", mass: 0, position: [0,0,0], ...props}))
-  const [plane] = useBox(() => ({mass: 0, args: 0.8, ...props}))
   //store
 
     //fps actions
@@ -28,7 +27,7 @@ export default function Model(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <scene name="Scene">
-        <mesh ref={plane} material={materials.Sol} geometry={nodes.Plane.geometry} name="Plane" />
+        <mesh ref={ground} material={materials.Sol} geometry={nodes.Plane.geometry} name="Plane" />
         <mesh ref={joueur} material={materials.Carrosseriej1} geometry={nodes.J1.geometry} name="J1" />
         <mesh position={[0,5,5]} material={materials.Carrosseriej2} geometry={nodes.J2.geometry} name="J2" />
         <mesh ref={mur} material={materials.MurM} geometry={nodes.Mur.geometry} name="Mur" position={[-15.18, 2, 0]} />
