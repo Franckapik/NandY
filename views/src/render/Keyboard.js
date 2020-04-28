@@ -7,7 +7,8 @@ import useStore from '../store/store'
 
 const KeyControls= (props) => {
 
-  const { backw, forw, left, right, stop } = useStore()
+  const { backw, forw, left, right, stop, currentId, playersList, set} = useStore()
+
   useHotkeys('up', (event, handler) => {
     if (event.type=== 'keydown') {
       forw()

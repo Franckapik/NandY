@@ -121,7 +121,7 @@ const {x, connected, players, id} = useStore()
         <Physics>
           <Plane rotation = {[-Math.PI/2, 0 ,0]}/>
         { /* <Joueur position={[ 0.5, 3, 2 ]} color={"red"} />*/}
-          <Joueur position={[ -0.5, 3, 2 ]} color={"blue"} />
+          <Joueur number= {2} position={[ -0.5, 3, 2 ]} color={"blue"} />
           <Wall position={[ 0, 0.25, 0 ]}/>
           <Wall y={0.5} />
           <Wall y={1} />

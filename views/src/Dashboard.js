@@ -3,12 +3,19 @@ import useStore from './store/store'
 
 
 function Main({setCanvas}) {
-  const {id, players} = useStore();
+  const {connected, currentId, players, playersList} = useStore();
+
   return (<div className="dashbd">
-<h1>Bienvenue {id}</h1>
-<ul>{players.map((p, i)=> {
-    return (<li key={p.id}>{p.id}</li>)
-  })}</ul>
+  {connected ?
+    <div>
+    <h1>Bienvenue {currentId} Mon score : {playersList.length? playersList[currentId].score : 0}</h1>
+    <ul>{Object.entries(playersList).map((p, i)=> {
+        return (<li key={p}>Joueur :{p[0]} Score : {p[1].score} </li>)
+      })}</ul>
+      </div>
+      : 'Connexion au serveur'
+  }
+
   </div>);
 }
 

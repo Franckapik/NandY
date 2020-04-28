@@ -13,15 +13,20 @@ const players = [];
 const socketIO = () => {
   io.on("connection", (socket) => {
     console.log("Joueur connecté");
-    socket.on('event', (data)=> {
-      console.log(data)
-      players.push(socket.id)
-      socket.emit('id', socket.id)
-      io.emit('connected', players)
+    console.log("Identification du joueur", socket.id);
+    socket.emit('id', socket.id)
 
+    socket.on('identified', (currentId)=> {
+      console.log("Joueur identifié", currentId );
+      players.push(socket.id)
+      console.log("MAJ générale de la liste :", players);
+      io.emit('added', players)
     })
 
-    socket.broadcast.emit('message', socket.id)
+    socket.on("move", (playersList)=> {
+      console.log('.');
+      socket.broadcast.emit("up", playersList)
+    });
     socket.on("disconnect", () => {
       console.log("Joueur déconnecté", socket.id);
       var i = players.indexOf(socket.id);
