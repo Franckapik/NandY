@@ -53,13 +53,13 @@ const Dat = (props) => {
 
 const ServerLink = (props) => {
   const {upPlayers, playersList, currentId, set} = useStore();
-  
+
   const addplayer = (listeId) => {
   let playersList = {};
     listeId.map((ident, i) => {
     playersList[ident] = {
         score : 0,
-        x : 0,
+        x : 2,
         y : 0
       }
     })
