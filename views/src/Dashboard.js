@@ -3,7 +3,7 @@ import useStore from './store/store'
 
 
 function Main({setCanvas}) {
-  const {connected, currentId, players, playersList} = useStore();
+  const {connected, currentId, playersList} = useStore();
 
   return (<div className="dashbd">
   {connected ?

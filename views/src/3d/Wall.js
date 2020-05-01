@@ -1,7 +1,6 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React from 'react'
 import {useFrame} from 'react-three-fiber'
 import {useBox} from 'use-cannon'
-import useStore from '.././store/store'
 
 
 export default function Wall(props) {

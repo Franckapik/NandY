@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function App() {
 
   return (<div className="flex_r">
   <div>
-    <img className="givemespace" src="/logomax.png" />
+    <img alt="logo principal" className="givemespace" src="/logomax.png" />
     <h1>Nature & You</h1>
 <p> Souvent, pour s'amuser, les hommes d'équipage</p>
     <p>Prennent des albatros, vastes oiseaux des mers,</p>
@@ -16,7 +16,7 @@ function App() {
     <p>Laissent piteusement leurs grandes ailes blanches</p>
     <p>Comme des avirons traîner à côté d'eux.</p>
     </div>
-    <div><button>Entrez dans l'aventure</button></div>
+    <div><button><i class="fas fa-leaf"></i>Jouer</button></div>
   </div>);
 }
 

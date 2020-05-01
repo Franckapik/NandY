@@ -1,12 +1,8 @@
 import create from 'zustand'
-import React, {useState, useEffect} from 'react';
-import DatGui, { DatBoolean, DatColor, DatNumber, DatString } from 'react-dat-gui';
+import React, {useEffect, useState} from 'react';
+import DatGui, { DatNumber, DatString } from 'react-dat-gui';
 import {socket} from '../Socket';
 import produce from "immer";
-
-
-
-
 
 const [useStore, api] = create((set, get) => ({
   connected : false,
@@ -53,33 +49,34 @@ const Dat = (props) => {
 
 
 const ServerLink = (props) => {
-  const {upPlayers, playersList, currentId, set} = useStore();
+  const {upPlayers, set} = useStore();
+  const [players, setPlayers] = useState([0]);
 
-  const addplayer = (listeId) => {
-  let playersList = {};
-    listeId.map((ident, i) => {
-    playersList[ident] = {
-        score : 0,
-        x : 0,
-        y : 0
-      }
-    })
-    console.log("Player list updated");
-    upPlayers(playersList)
-   }
+   useEffect(()=> {
+     if (players.length) {
+       const array = players.map((ident, i) => {
+         return [ident, { score : 0, x : 0, y : 0 } ]
+       })
+       console.log("Player list updated");
+       upPlayers(Object.fromEntries(array))
+     }
 
-  const a = api.getState().playersList
+   }, [players, upPlayers])
+
   useEffect(() => {
      socket.on('id', id => {
        set(state => ({currentId: id}))
        socket.emit('identified', api.getState().currentId)
      });
-     socket.on('added', players => {addplayer(players)
-     set(state => ({connected: true}))})
+     socket.on('added', padded => {
+    setPlayers(padded)
+     set(state => ({connected: true}))
+    })
      //socket.on('up', playersList => {api.setState({playersList: playersList})});
      //socket.emit('move', playersList);
-     socket.on('disconnect', (data) => { addplayer(data, upPlayers)});
-  }, []);
+     socket.on('disconnect', padded => {
+    setPlayers(padded)});
+  }, [set]);
 
 
 

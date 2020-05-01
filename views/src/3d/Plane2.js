@@ -1,7 +1,5 @@
 import React from 'react'
 import * as THREE from 'three';
-import {usePlane} from 'use-cannon'
-import { Canvas, useFrame } from 'react-three-fiber'
 
 export default function Plane2(props) {
   return (

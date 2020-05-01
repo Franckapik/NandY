@@ -1,6 +1,5 @@
 import React, {useRef} from 'react'
 import {useFrame, useThree} from 'react-three-fiber'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 export default function Controls() {
   const controlsRef = useRef();

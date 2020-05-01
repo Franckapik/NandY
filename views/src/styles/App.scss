@@ -4,11 +4,13 @@
 @import 'dat';
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Love+Ya+Like+A+Sister&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Frijole&display=swap');
+
 
 body {
   overflow: hidden;
-  background: $dark;
-  color: $light;
+  background: $white;
+  color: $dark;
   p {
     font-family: 'Josefin Slab', serif;
     font-size: 1em;
@@ -18,9 +20,9 @@ body {
   }
 
 
-  h1 {
+  h1, button {
     font-family: 'Love Ya Like A Sister', cursive;
-    font-size: 4.5em
+    font-size: 1em
   }
 }
 

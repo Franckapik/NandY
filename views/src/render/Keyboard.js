@@ -1,13 +1,11 @@
 import {useHotkeys} from 'react-hotkeys-hook'
-import React, {useState, Suspense, useEffect, useRef} from 'react'
-import {Canvas, extend, Dom, useFrame} from 'react-three-fiber'
 import useStore from '../store/store'
 
 
 
 const KeyControls= (props) => {
 
-  const { backw, forw, left, right, reset, currentId, playersList, set} = useStore()
+  const { backw, forw, left, right, reset} = useStore()
 
   useHotkeys('up', (event, handler) => {
     if (event.type=== 'keydown') {

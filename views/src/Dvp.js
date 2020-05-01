@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Canvas3D from './Canvas';
-import Main from './Main';
 import {Dat} from './store/store';
+import Main from './Main'
 import {ServerLink} from './store/store';
 import FPSStats from "react-fps-stats";
 import Dashboard from './Dashboard'
@@ -15,7 +15,7 @@ function Dvp() {
     <FPSStats />
     <ServerLink />
     <Dashboard />
-    <Main setCanvas={setCanvas}></Main>
+    <Main setCanvas={setCanvas} visible={false}></Main>
     <Canvas3D canvas={canvas}></Canvas3D>
   </div>);
 }

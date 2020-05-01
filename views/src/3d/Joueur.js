@@ -1,11 +1,11 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {useFrame} from 'react-three-fiber'
-import {useBox, useSphere} from 'use-cannon'
+import {useSphere} from 'use-cannon'
 import useStore from '.././store/store'
 
 
 export default function Joueur(props) {
-  const { connected, currentId, players, playersList, set, win, reset } = useStore()
+  const { connected, currentId, playersList, win } = useStore()
   let x = 0;
   let y = 0;
 
@@ -15,9 +15,7 @@ export default function Joueur(props) {
   }
   const [ hasCollided, setHasCollided ] = useState(false)
   const addScore = () => {
-    console.log(hasCollided);
     setHasCollided(true)
-    console.log("stop");
     win()
   }
   const [ref, api] = useSphere(() => ({

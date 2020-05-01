@@ -1,7 +1,5 @@
-import React, {useRef, useState, useEffect} from 'react'
-import {useFrame} from 'react-three-fiber'
+import React, {useState} from 'react'
 import {useBox} from 'use-cannon'
-import useStore from '.././store/store'
 
 
 export default function Cube(props) {
@@ -11,8 +9,6 @@ export default function Cube(props) {
   // Set up state for the hovered and active state
   const [active, setActive] = useState(false)
   const [ref, api] = useBox(() => ({ mass: 5, position: [ 0, 5, 0 ],  ...props }))
-  const { x, y } = useStore()
-
 
   return (<mesh
     receiveShadow="receiveShadow"
