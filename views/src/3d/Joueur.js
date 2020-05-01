@@ -21,8 +21,9 @@ export default function Joueur(props) {
   const [ref, api] = useSphere(() => ({
     type: "dynamic",
     mass: 10,
-    position: [0,0.2,0],
-    angularDamping:1,
+    position: [0,10,20],
+    radius : 1,
+    angularDamping:0.1,
     //linearDamping:1,
     allowSleep:false,
     //sleepSpeedLimit: 1,
@@ -35,14 +36,14 @@ export default function Joueur(props) {
 
   useFrame(() => {
     //api.position.set(y, 0.10, x)
-    api.applyLocalImpulse([x,0,y], [0,2,0]);
+    api.applyLocalImpulse([y,0,x], [0,1,0]);
 
   }
 
 );
 
   return (<mesh ref={ref}>
-    <sphereGeometry attach="geometry" args={[0.2, 0.2, 0.2]} />
+    <sphereGeometry attach="geometry" radius={1} />
     <meshLambertMaterial attach="material" color={props.color}/>
   </mesh>)
 }

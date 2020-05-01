@@ -17,7 +17,6 @@ Premier jeu : collision, score, pas encore de synchronisation entre joueurs.
 ----------------------
 Clarté dans le commande -> codesandboxable
 Elminer toutes forme d'erreurs actuelle
-Linter l'ensemble
 Test des contraintes pivots
 Identifier toutes les variables à mettre sur le DAT
 Utilisation fine de applyImpulse

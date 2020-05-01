@@ -8,7 +8,7 @@ export default function Plane(props) {
     args:[1,1,0],
     ...props }))
   return (<mesh ref={gg} receiveShadow="receiveShadow">
-    <planeBufferGeometry attach="geometry" args={[5,5,0]}/>
+    <planeBufferGeometry attach="geometry" args={[50,50,0]}/>
     <meshStandardMaterial attach="material" color="crimson" />
   </mesh>)
 }

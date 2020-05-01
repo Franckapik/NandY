@@ -16,7 +16,7 @@ extend({OrbitControls})
 const GameCanvas = ({canvas}) => {
 
 return (
-  <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 10, 5 ], fov: 50 }}>
+  <Canvas shadowMap="shadowMap" sRGB="sRGB" gl={{ alpha: false }} camera={{ position: [ 0, 50, 10 ], fov: 50 }}>
     <color attach="background" args={['lightblue']}/>
     <spotLight position={[10, 200, 10]} angle={1} penumbra={0} intensity={1} castShadow="castShadow"/>
     <Controls />
@@ -24,14 +24,8 @@ return (
     <Physics gravity={[0,-10,0]}>
       <Plane rotation = {[-Math.PI/2, 0 ,0]}/>
     { /* <Joueur position={[ 0.5, 3, 2 ]} color={"red"} />*/}
-      <Joueur number= {2} position={[ -0.5, 3, 2 ]} color={"blue"} />
-      <Wall position={[ 0, 0.25, 0 ]}/>
-      <Wall y={0.5} />
-      <Wall y={1} />
-      <Wall y={1.5} />
-      <Wall y={0} />
-      <Wall y={-0.5} />
-      <Wall y={-2} />
+      <Joueur castShadow receiveShadow number= {2} position={[ -0.5, 3, 2 ]} color={"blue"} />
+
     </Physics>
   </Canvas>
 )
