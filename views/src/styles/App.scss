@@ -3,14 +3,35 @@
 @import 'basic';
 @import 'dat';
 
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Love+Ya+Like+A+Sister&display=swap');
 
 body {
   overflow: hidden;
+  background: $dark;
+  color: $light;
+  p {
+    font-family: 'Josefin Slab', serif;
+    font-size: 1em;
+    font-weight: regular;
+    letter-spacing: 0.05em;
+    line-height: 1em;
+  }
+
+
+  h1 {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 4.5em
+  }
+}
+
+a {
+  color: $dark;
 }
 
 .header {
 height: 60px;
-background-color: crimson;
+background-color: $main;
+color: $dark;
 }
 
 .mainDom {

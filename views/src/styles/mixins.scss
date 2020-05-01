@@ -18,7 +18,7 @@ $font1: 'Roboto', sans-serif;
     cursor: pointer;
   }
 }
-@mixin box($bgc:$darklight1, $bc:$dark, $p:0px, $r:0px, $bs: 0px,$c:$dark) {
+@mixin box($bgc:$medium, $bc:$dark, $p:0px, $r:0px, $bs: 0px,$c:$dark) {
   background-color: $bgc;
   color: $c;
   border: $bs solid $bc;
@@ -29,7 +29,7 @@ $font1: 'Roboto', sans-serif;
     color: $c;
   }
 }
-@mixin button($w:4em,$h:auto,$c:$white,$bg:$darklight,$p:10px,$b:solid 0 $white,$br:15px) {
+@mixin button($w:4em,$h:auto,$c:$dark,$bg:$medium,$p:10px,$b:solid 0 $white,$br:15px) {
   min-width: $w;
   max-width: 180px;
   height: $h;
@@ -113,7 +113,7 @@ $font1: 'Roboto', sans-serif;
   }
 
   .table-header {
-    background-color: $accent4;
+    background-color: $medium;
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
@@ -122,7 +122,7 @@ $font1: 'Roboto', sans-serif;
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.1);
   }
 }
-@mixin input ($b:$whitedark,$p:2px,$m:5px 5px 15px 0px,$s:1em,$w:90%) {
+@mixin input ($b:$medium,$p:2px,$m:5px 5px 15px 0px,$s:1em,$w:90%) {
   background-color: $b;
   padding: $p;
   margin: $m;
