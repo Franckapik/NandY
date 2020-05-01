@@ -118,7 +118,7 @@ const {x, connected, players, id} = useStore()
         <spotLight position={[10, 200, 10]} angle={1} penumbra={0} intensity={1} castShadow="castShadow"/>
         <Controls />
         <Keyboard></Keyboard>
-        <Physics>
+        <Physics gravity={[0,-10,0]}>
           <Plane rotation = {[-Math.PI/2, 0 ,0]}/>
         { /* <Joueur position={[ 0.5, 3, 2 ]} color={"red"} />*/}
           <Joueur number= {2} position={[ -0.5, 3, 2 ]} color={"blue"} />

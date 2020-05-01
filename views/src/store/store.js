@@ -13,18 +13,19 @@ const [useStore, api] = create((set, get) => ({
   players : [],
   playersList : {},
   count: 2,
+  force: 0.5,
   //x: () => get(state => state.playersList[state.currentId].x),
-  x: 2,
-  y: 1,
+  x: 0,
+  y: 0,
   currentId: 0,
   win: () => set(state => {state.playersList[state.currentId].score += 1} ),
   upPlayers: (list) => set(state => ({playersList: list})),
   inc: () => set(state => ({ count: state.count + 1 })),
   dec: () => set(state => ({ count: state.count - 1 })),
-  forw: () => set(state => {state.playersList[state.currentId].x -= 0.1} ),
-  backw: () => set(state => {state.playersList[state.currentId].x += 0.1} ),
-  left: () => set(state => {state.playersList[state.currentId].y -= 0.1} ),
-  right: () => set(state => {state.playersList[state.currentId].y += 0.1} ),
+  forw: () => set(state => {state.playersList[state.currentId].x -= state.force} ),
+  backw: () => set(state => {state.playersList[state.currentId].x += state.force} ),
+  left: () => set(state => {state.playersList[state.currentId].y -= state.force} ),
+  right: () => set(state => {state.playersList[state.currentId].y += state.force} ),
   reset: () => set(state => {state.playersList[state.currentId].x = state.x} ),
   set: fn => set(produce(fn)),
 
@@ -40,7 +41,7 @@ const Dat = (props) => {
                   <DatString path='currentId' label='Joueur' />
                   <DatString path='players.length' label='Joueurs' />
                   <DatString path='playersList[currentId].score' label='Score' />
-                  <DatNumber path='x' label='x' min={1} max={10} step={0.1} />
+                  <DatNumber path='x' label='x' min={0} max={10} step={0.1} />
                   <DatNumber path='y' label='y' min={1} max={10} step={0.1} />
                   <DatNumber path='count' label='count' min={1} max={10} step={1} />
                 </DatGui>
@@ -59,7 +60,7 @@ const ServerLink = (props) => {
     listeId.map((ident, i) => {
     playersList[ident] = {
         score : 0,
-        x : 2,
+        x : 0,
         y : 0
       }
     })

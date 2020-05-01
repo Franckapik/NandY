@@ -1,24 +1,22 @@
 import React, {useState} from 'react';
-import Canvas3D from './Canvas';
-import Header from './Header';
-import Main from './Main';
-import {Dat} from './store/store';
-import {ServerLink} from './store/store';
-import FPSStats from "react-fps-stats";
-import Dashboard from './Dashboard'
-
 
 function App() {
-  const [canvas, setCanvas] = useState("c5");
 
-  return (<div>
-    <Header></Header>
-    <Dat />
-    <FPSStats />
-    <ServerLink />
-    <Dashboard />
-    <Main setCanvas={setCanvas}></Main>
-    <Canvas3D canvas={canvas}></Canvas3D>
+  return (<div className="flex_r">
+  <div>
+    <img className="givemespace" src="/logomax.png" />
+    <h1>Nature & You</h1>
+<p> Souvent, pour s'amuser, les hommes d'équipage</p>
+    <p>Prennent des albatros, vastes oiseaux des mers,</p>
+    <p>Qui suivent, indolents compagnons de voyage,</p>
+    <p>Le navire glissant sur les gouffres amers.</p>
+<p></p>
+    <p>A peine les ont-ils déposés sur les planches,</p>
+    <p>Que ces rois de l'azur, maladroits et honteux,</p>
+    <p>Laissent piteusement leurs grandes ailes blanches</p>
+    <p>Comme des avirons traîner à côté d'eux.</p>
+    </div>
+    <div><button>Entrez dans l'aventure</button></div>
   </div>);
 }
 

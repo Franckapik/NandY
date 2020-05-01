@@ -1,19 +1,12 @@
 import React, {useRef, useState, useEffect} from 'react'
 import {useFrame} from 'react-three-fiber'
-import {useBox} from 'use-cannon'
+import {useBox, useSphere} from 'use-cannon'
 import useStore from '.././store/store'
 
+
 export default function Joueur(props) {
-  const {
-    connected,
-    currentId,
-    players,
-    playersList,
-    set,
-    win,
-    reset
-  } = useStore()
-  let x = 2;
+  const { connected, currentId, players, playersList, set, win, reset } = useStore()
+  let x = 0;
   let y = 0;
 
   if (connected) {
@@ -27,16 +20,31 @@ export default function Joueur(props) {
     console.log("stop");
     win()
   }
-  const [ref, api] = useBox(() => ({
-    mass: 1,
-    args: [ 0.1, 0.1, 0.1 ],
+  const [ref, api] = useSphere(() => ({
+    type: "dynamic",
+    mass: 10,
+    position: [0,0.2,0],
+    angularDamping:1,
+    //linearDamping:1,
+    allowSleep:false,
+    //sleepSpeedLimit: 1,
+    //sleepTimeLimit: 2,
+    //collisionFilterGroup: 1,
+    //collisionFilterMask: 2,
+    //fixedRotation: true,
     onCollide: e => {!hasCollided && addScore()}
   }))
 
-  useFrame(() => api.position.set(y, 0.10, x));
+  useFrame(() => {
+    //api.position.set(y, 0.10, x)
+    api.applyLocalImpulse([x,0,y], [0,2,0]);
+
+  }
+
+);
 
   return (<mesh ref={ref}>
-    <boxBufferGeometry attach="geometry" args={[0.2, 0.2, 0.2]}/>
+    <sphereGeometry attach="geometry" args={[0.2, 0.2, 0.2]} />
     <meshLambertMaterial attach="material" color={props.color}/>
   </mesh>)
 }

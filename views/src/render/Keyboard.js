@@ -7,34 +7,34 @@ import useStore from '../store/store'
 
 const KeyControls= (props) => {
 
-  const { backw, forw, left, right, stop, currentId, playersList, set} = useStore()
+  const { backw, forw, left, right, reset, currentId, playersList, set} = useStore()
 
   useHotkeys('up', (event, handler) => {
     if (event.type=== 'keydown') {
       forw()
     } else {
-      //stop()
+      reset()
     }
   }, {keyup : true, keydown: true});
   useHotkeys('down', (event, handler) => {
     if (event.type=== 'keydown') {
       backw()
     } else {
-      //stop()
+      reset()
     }
   }, {keyup : true, keydown: true});
   useHotkeys('left', (event, handler) => {
     if (event.type=== 'keydown') {
       left()
     } else {
-      //stop()
+      reset()
     }
   }, {keyup : true, keydown: true});
   useHotkeys('right', (event, handler) => {
     if (event.type=== 'keydown') {
       right()
     } else {
-      //stop()
+      reset()
     }
   }, {keyup : true, keydown: true});
   useHotkeys('q', () => backw());
