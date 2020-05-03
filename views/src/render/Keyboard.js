@@ -5,13 +5,18 @@ import useStore from '../store/store'
 
 const KeyControls= (props) => {
 
-  const { backw, forw, left, right, reset} = useStore()
+  const {movement, backw, forw, left, right, reset} = useStore()
+
+
 
   useHotkeys('up', (event, handler) => {
     if (event.type=== 'keydown') {
       forw()
+      movement.up = true;
     } else {
       reset()
+      movement.up = false;
+
     }
   }, {keyup : true, keydown: true});
   useHotkeys('down', (event, handler) => {

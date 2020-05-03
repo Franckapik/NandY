@@ -16,17 +16,53 @@ const socketIO = () => {
     console.log("Identification du joueur", socket.id);
     socket.emit('id', socket.id)
 
-    socket.on('identified', (currentId)=> {
-      console.log("Joueur identifié", currentId );
-      players.push(socket.id)
-      console.log("MAJ générale de la liste :", players);
-      io.emit('added', players)
-    })
+    setInterval(function() {
+      io.sockets.emit('state', players);
+    }, 1000 / 60);
+
+    //store dans le serveur
+/*socket.on('new player', function() {
+  players[socket.id] = {
+    x: 300,
+    y: 300
+  };
+});*/
+
+socket.on('movement', function(data) {
+  var player = players[socket.id] || {};
+  if (data.left) {
+    player.x -= 5;
+  }
+  if (data.up) {
+    player.y -= 5;
+    console.log('hey');
+  }
+  if (data.right) {
+    player.x += 5;
+  }
+  if (data.down) {
+    player.y += 5;
+  }
+    });
 
     socket.on("move", (playersList)=> {
       console.log('.');
       socket.broadcast.emit("up", playersList)
     });
+
+    //
+
+    socket.on('identified', (currentId)=> {
+      console.log("Joueur identifié", currentId );
+      players[socket.id] = {
+        x: 300,
+        y: 300
+      };
+      console.log("MAJ générale de la liste :", players);
+      io.emit('added', players)
+    })
+
+
     socket.on("disconnect", () => {
       console.log("Joueur déconnecté", socket.id);
       var i = players.indexOf(socket.id);

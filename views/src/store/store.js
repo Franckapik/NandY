@@ -1,6 +1,6 @@
 import create from 'zustand'
 import React, {useEffect, useState} from 'react';
-import DatGui, { DatNumber, DatString } from 'react-dat-gui';
+import DatGui, { DatNumber, DatString, DatBoolean} from 'react-dat-gui';
 import {socket} from '../Socket';
 import produce from "immer";
 
@@ -13,6 +13,12 @@ const [useStore, api] = create((set, get) => ({
   //x: () => get(state => state.playersList[state.currentId].x),
   x: 0,
   y: 0,
+  movement : {
+    up: false,
+    down: false,
+    left: false,
+    right: false
+  },
   currentId: 0,
   win: () => set(state => {state.playersList[state.currentId].score += 1} ),
   upPlayers: (list) => set(state => ({playersList: list})),
@@ -40,6 +46,7 @@ const Dat = (props) => {
                   <DatNumber path='x' label='x' min={0} max={10} step={0.1} />
                   <DatNumber path='y' label='y' min={1} max={10} step={0.1} />
                   <DatNumber path='count' label='count' min={1} max={10} step={1} />
+                  <DatBoolean path='movement.up'/>
                 </DatGui>
 
               </div>
@@ -49,8 +56,15 @@ const Dat = (props) => {
 
 
 const ServerLink = (props) => {
-  const {upPlayers, set} = useStore();
+  const {upPlayers,movement, set} = useStore();
   const [players, setPlayers] = useState([0]);
+
+  useEffect(()=> {
+    socket.emit('new player');
+setInterval(function() {
+  socket.emit('movement', movement);
+}, 1000 / 60);
+  })
 
    useEffect(()=> {
      if (players.length) {
@@ -64,6 +78,9 @@ const ServerLink = (props) => {
    }, [players, upPlayers])
 
   useEffect(() => {
+socket.on('message', function(data) {
+  console.log(data);
+});
      socket.on('id', id => {
        set(state => ({currentId: id}))
        socket.emit('identified', api.getState().currentId)

@@ -18,11 +18,12 @@ export default function Joueur(props) {
     setHasCollided(true)
     win()
   }
+
   const [ref, api] = useSphere(() => ({
     type: "dynamic",
     mass: 10,
     position: [0,10,20],
-    radius : 1,
+    radius : 0.2,
     angularDamping:0.1,
     //linearDamping:1,
     allowSleep:false,
@@ -36,13 +37,13 @@ export default function Joueur(props) {
 
   useFrame(() => {
     //api.position.set(y, 0.10, x)
-    api.applyLocalImpulse([y,0,x], [0,1,0]);
+   api.applyImpulse([y,0,x], [0,1,0]);
 
   }
 
 );
 
-  return (<mesh ref={ref}>
+  return (<mesh ref={ref} >
     <sphereGeometry attach="geometry" radius={1} />
     <meshLambertMaterial attach="material" color={props.color}/>
   </mesh>)
