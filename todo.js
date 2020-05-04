@@ -14,6 +14,8 @@ Mise en place de routes
 Style général appliqué
 Premier jeu : collision, score, pas encore de synchronisation entre joueurs.
 
+
+browserlist a changer
 ----------------------
 Clarté dans le commande -> codesandboxable
 Elminer toutes forme d'erreurs actuelle

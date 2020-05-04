@@ -16,7 +16,7 @@ function Dvp() {
     <ServerLink />
     <Dashboard />
     <Main setCanvas={setCanvas} visible={false}></Main>
-    <Canvas3D canvas={canvas}></Canvas3D>
+   { /*<Canvas3D canvas={canvas}></Canvas3D>*/}
   </div>);
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function App() {
+function Home() {
 
   return (<div className="flex_r">
   <div>
@@ -20,4 +20,4 @@ function App() {
   </div>);
 }
 
-export default App;
+export default Home;
