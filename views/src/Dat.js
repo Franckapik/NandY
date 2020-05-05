@@ -14,6 +14,7 @@ const Dat = (props) => {
                     <DatString path='currentId' label='Joueur' />
                     <DatString path='movement.up' label='Avancer' />
                     <DatString path='nbPlayers' label='Nombre de joueurs' />
+                    <DatString path='isLoggedIn' label='Logged' />
                     <DatNumber path='score' label='Score' />
                   </DatGui>
   

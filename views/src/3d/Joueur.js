@@ -1,43 +1,36 @@
-import React, {useState} from 'react'
-import {useFrame} from 'react-three-fiber'
+import React, {useState, useRef} from 'react'
+import {useFrame, Dom} from 'react-three-fiber'
 import {useSphere} from 'use-cannon'
-import useStore from '.././store/store'
+import {useStoreState} from 'easy-peasy'
 
 
 export default function Joueur(props) {
-  const { connected, currentId, playersList, win } = useStore()
-  let x = 0;
-  let y = 0;
-
-  if (connected) {
-    x = playersList[currentId].x;
-    y = playersList[currentId].y;
-  }
   const [ hasCollided, setHasCollided ] = useState(false)
-  const addScore = () => {
-    setHasCollided(true)
-    win()
-  }
-
+  const currentId = useStoreState(state => state.currentId);
+  const y = useStoreState(state => state.findInPlayers("y", props.id))
+  const x = useStoreState(state => state.findInPlayers("x", props.id))
+  
   const [ref, api] = useSphere(() => ({
     type: "dynamic",
     mass: 10,
-    position: [0,10,20],
     radius : 0.2,
     angularDamping:0.1,
-    //linearDamping:1,
+    position : props.position,
+    linearDamping:0.5,
+    angularDamping:0.5,
     allowSleep:false,
     //sleepSpeedLimit: 1,
     //sleepTimeLimit: 2,
     //collisionFilterGroup: 1,
     //collisionFilterMask: 2,
     //fixedRotation: true,
-    onCollide: e => {!hasCollided && addScore()}
+    onCollide: e => {setHasCollided(true)}
   }))
 
   useFrame(() => {
-    //api.position.set(y, 0.10, x)
-   api.applyImpulse([y,0,x], [0,1,0]);
+    //api.position.set(1,1,1)   
+    
+   api.applyImpulse([x,0,y], [0,1,0]);
 
   }
 

@@ -5,15 +5,11 @@ import NotFoundPage from './404';
 import Header from './Header';
 import Page from './Page'
 import Dvp from './Dvp'
-import { StoreProvider } from 'easy-peasy';
-import store from './store/store';
 
 
 export default function App() {
   return (<BrowserRouter>
-    <div>
-    <Header></Header>
-    <StoreProvider store={store}>
+    <Header />
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/agenda" render={() => <Page name="agenda" />}/>
@@ -23,7 +19,5 @@ export default function App() {
         <Route path="/dvp" component={Dvp}/>
         <Route component={NotFoundPage}/>
       </Switch>
-      </StoreProvider>
-    </div>
   </BrowserRouter>)
 }

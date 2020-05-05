@@ -10,37 +10,37 @@ server.listen(3002);
 const socketIO = () => {
 
   app.locals.players = {}
-  
+
   //CONNECTION
   io.on("connection", (socket) => {
     app.locals.players[socket.id] = {
-      x: 300,
-      y: 300,
-      score : 10
+      x: 0,
+      y: 0,
+      score: 10
     };
-   
+
     //ENVOI ID
     console.log("Identification du joueur", socket.id);
     socket.emit('id', socket.id)
 
     //RECEPTION KEYBOARD
     socket.on('movement', function (data) {
-
-      var player = app.locals.players[socket.id] || {} ;
+      var force = 1;
+      var player = app.locals.players[socket.id] || {};
       if (data.left) {
-        player.x -= 5;
+        player.x -= force;
+      } else if (data.right) {
+        player.x += force;
+      } else if (data.up) {
+        player.y -= force;
+      } else if (data.down) {
+        player.y += force;
+      } else {
+        player.x = 0;
+        player.y = 0;
       }
-      if (data.up) {
-        player.y -= 5;
-        player.score +=10;
-      }
-      if (data.right) {
-        player.x += 5;
-      }
-      if (data.down) {
-        player.y += 5;
-      }
-     io.emit('state', app.locals.players);
+
+      io.emit('state', app.locals.players);
 
     });
 

@@ -1,7 +1,11 @@
 import { createStore, action, computed } from 'easy-peasy';
 
 const store = createStore({
-  players : {},
+  players : {0 : {
+    x : 0,
+    y : 0,
+    score : 0,
+  }},
   movement : {
     up: false,
     down: false,
@@ -9,8 +13,10 @@ const store = createStore({
     right: false
   },
   currentId : 0,
+  findInPlayers : computed(state => (name, id) => state.players[id][name]),
   score : computed(state => state.players[state.currentId]?.score ?? 0),
   nbPlayers : computed(state => Object.keys(state.players).length),
+  isLoggedIn: computed(state => Object.keys(state.players).length > 1),
   updatePlayers : action(
     (state, payload) => {state.players = payload}
   ),

@@ -6,9 +6,10 @@ import ServerLink from './ServerLink';
 import FPSStats from "react-fps-stats";
 import Dashboard from './Dashboard'
 import Keyboard from './render/Keyboard'
+import GameCanvas from './GameCanvas'
 
 
-function Dvp() {
+const Dvp = () => {
   //const [canvas, setCanvas] = useState("c5");
 
   return (<div>
@@ -17,6 +18,7 @@ function Dvp() {
     <ServerLink />
     <Dashboard />
     <Keyboard />
+    <GameCanvas />
    { /*<Menu setCanvas={setCanvas} visible={false}></Menu>*/}
    { /*<Canvas3D canvas={canvas}></Canvas3D>*/}
   </div>);
