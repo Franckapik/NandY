@@ -7,8 +7,7 @@ import Controls from './render/Controls'
 //import BoxHover from './3d/BoxHover'
 import Plane from './3d/Plane'
 import Joueur from './3d/Joueur'
-import Wall from './3d/Wall'
-import Keyboard from './render/Keyboard'
+//import Wall from './3d/Wall'
 
 
 extend({OrbitControls})
@@ -20,7 +19,6 @@ return (
     <color attach="background" args={['lightblue']}/>
     <spotLight position={[10, 200, 10]} angle={1} penumbra={0} intensity={1} castShadow="castShadow"/>
     <Controls />
-    <Keyboard></Keyboard>
     <Physics
     gravity={[0,-10,0]}
     defaultContactMaterial={

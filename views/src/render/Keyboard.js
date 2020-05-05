@@ -1,5 +1,5 @@
 import {useHotkeys} from 'react-hotkeys-hook'
-import { useStoreState, useStoreActions, action } from 'easy-peasy';
+import {useStoreActions } from 'easy-peasy';
 
 const KeyControls= (props) => {
 

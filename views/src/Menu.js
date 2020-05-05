@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Main({setCanvas}) {
-  return (<div className="mainDom">
+function Menu({setCanvas}) {
+  return (<div className="MenuDom">
 <h1>Nature & You</h1>
 <ul>
   <li className="cursor" onClick={()=> setCanvas("c1")}>Physics</li>
@@ -14,4 +14,4 @@ function Main({setCanvas}) {
   </div>);
 }
 
-export default Main;
+export default Menu;
