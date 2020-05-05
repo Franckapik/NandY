@@ -5,6 +5,7 @@ import Main from './Main'
 import {ServerLink} from './store/store';
 import FPSStats from "react-fps-stats";
 import Dashboard from './Dashboard'
+import Keyboard from './render/Keyboard'
 
 
 function Dvp() {
@@ -15,7 +16,8 @@ function Dvp() {
     <FPSStats />
     <ServerLink />
     <Dashboard />
-    <Main setCanvas={setCanvas} visible={false}></Main>
+    <Keyboard />
+   { /*<Main setCanvas={setCanvas} visible={false}></Main>*/}
    { /*<Canvas3D canvas={canvas}></Canvas3D>*/}
   </div>);
 }

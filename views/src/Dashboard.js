@@ -3,17 +3,18 @@ import { useStoreState } from "easy-peasy";
 
 function Main({setCanvas}) {
 
-  const connected = useStoreState(state => state.connected);
   const currentId = useStoreState(state => state.currentId);
   const players = useStoreState(state => state.players);
+  const score = useStoreState(state => state.score);
+  const x = useStoreState(state => state.players[state.currentId]?.x ?? 0);
+  const y = useStoreState(state => state.players[state.currentId]?.y ?? 0);
   
   return (<div className="dashbd">
-  {connected ?
+  {currentId ?
     <div>
-    <p>Bienvenue {currentId} Mon score : {players.length? players[currentId].score : 0}</p>
-    <ul>{Object.entries(players).map((p, i)=> {
-        return (<li key={p}>Joueur :{p[0]} Score : {p[1].score} </li>)
-      })}</ul>
+    <p>Bienvenue {currentId} Mon score : {score}</p>
+<p>{Object.entries(players).map((p,i) => (<li key={"key" + p}>Joueur : {p[0]}  Score : {p[1].score}</li>) )}</p>
+<p>{x}-{y}</p>
       </div>
       : 'Connexion au serveur'
   }
