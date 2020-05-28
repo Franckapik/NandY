@@ -8,7 +8,7 @@ import Controls from './render/Controls'
 import Plane from './3d/Plane'
 import Joueur from './3d/Joueur'
 //import Wall from './3d/Wall'
-import { StoreProvider, useStoreState, useStore } from 'easy-peasy';
+import { StoreProvider, useStoreState, useStore, useStoreActions } from 'easy-peasy';
 import store from './store/store';
 
 
@@ -16,8 +16,13 @@ import store from './store/store';
 extend({OrbitControls})
 
 const GameCanvas = () => {
-  const players = useStoreState(state => Object.entries(state.players))
   const isLoggedIn = useStoreState(state => state.isLoggedIn)
+  const players = useStoreState(state => isLoggedIn && Object.entries(state.players))
+  const currentId = useStoreState(state => isLoggedIn && state.currentId);
+  const y = useStoreState(state => isLoggedIn && state.findInPlayers("y", currentId))
+  const x = useStoreState(state => isLoggedIn && state.findInPlayers("x", currentId))
+ // const Pos = useStoreState(state => isLoggedIn && state.findInPlayers("position", currentId))
+
 
 return (
 isLoggedIn ? 

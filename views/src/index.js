@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './routes';
+import App from './App';
 import './styles/App.scss';
 import * as serviceWorker from './serviceWorker';
 import { StoreProvider } from 'easy-peasy';
@@ -10,8 +10,7 @@ ReactDOM.render(
   <React.StrictMode >
     <StoreProvider store={store}> 
       <App />
-    </StoreProvider>
-   
+    </StoreProvider> 
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -39,7 +39,8 @@ const socketIO = () => {
         player.x = 0;
         player.y = 0;
       }
-
+      console.log(".");
+      
       io.emit('state', app.locals.players);
 
     });

@@ -5,6 +5,7 @@ const store = createStore({
     x : 0,
     y : 0,
     score : 0,
+    position : [0,0,0]
   }},
   movement : {
     up: false,
@@ -20,6 +21,11 @@ const store = createStore({
   updatePlayers : action(
     (state, payload) => {state.players = payload}
   ),
+  /*listenPosition : action(
+    (state, payload) => {
+      state.players[payload[1]].position = payload[0]
+      }
+  ),*/
   updateData : action(
     (state, payload) => ({state: {...state, ...payload}})
   ),

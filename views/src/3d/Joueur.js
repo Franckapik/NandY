@@ -1,7 +1,7 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import {useFrame, Dom} from 'react-three-fiber'
 import {useSphere} from 'use-cannon'
-import {useStoreState} from 'easy-peasy'
+import {useStoreState, useStoreActions, action} from 'easy-peasy'
 
 
 export default function Joueur(props) {
@@ -9,7 +9,11 @@ export default function Joueur(props) {
   const currentId = useStoreState(state => state.currentId);
   const y = useStoreState(state => state.findInPlayers("y", props.id))
   const x = useStoreState(state => state.findInPlayers("x", props.id))
+  //const listenPosition = useStoreActions(action => action.listenPosition);
   
+  //const position = useRef([0, 0, 0])
+  //useEffect(() => api.position.subscribe((pos) => (listenPosition([pos, props.id]))), [])
+
   const [ref, api] = useSphere(() => ({
     type: "dynamic",
     mass: 10,
@@ -29,10 +33,9 @@ export default function Joueur(props) {
 
   useFrame(() => {
     //api.position.set(1,1,1)   
-    
    api.applyImpulse([x,0,y], [0,1,0]);
-
   }
+
 
 );
 

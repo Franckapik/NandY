@@ -1,10 +1,10 @@
 body{
   font-family: 'Oswald', sans-serif;
-  background: $white;
   overflow-x: hidden;
   font-size: 0.9em;
   margin:0;
 }
+
 
 h1 {
   @include texte1($s:0.8em,$w:400,$ls:0.2em,$lh:1em);

@@ -12,11 +12,11 @@ export default function Controls() {
       ref={controlsRef}
       args={[camera, gl.domElement]}
       enableRotate
-      enablePan={false}
-      maxDistance={100}
-      minDistance={5}
-      minPolarAngle={Math.PI / 6}
-      maxPolarAngle={Math.PI / 2}
+     // enablePan={false}
+     // maxDistance={100}
+      //minDistance={5}
+      //minPolarAngle={Math.PI / 6}
+     // maxPolarAngle={Math.PI / 2}
     />
   );
 }
