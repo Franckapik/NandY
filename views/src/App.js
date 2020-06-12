@@ -1,10 +1,10 @@
 import React from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Home from './Home';
-import NotFoundPage from './404';
-import Header from './Header';
-import Page from './Page'
-import Dvp from './Dvp'
+import Home from './components/Home';
+import NotFoundPage from './components/404';
+import Header from './components/Header';
+import Page from './components/Page'
+import Dvp from './components/Dvp'
 
 
 export default function App() {
