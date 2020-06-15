@@ -33,6 +33,9 @@ const Dat = () => {
         </DatFolder>
         <DatFolder title="Camera" closed="false">
           <DatBoolean path="camera.orbitEnable" label="OrbitControls" />
+          <DatString path="camera.position.x" label="x" />
+          <DatString path="camera.position.y" label="y" />
+          <DatString path="camera.position.z" label="z" />
         </DatFolder>
       </DatGui>
     </div>

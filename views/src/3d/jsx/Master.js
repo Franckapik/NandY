@@ -18,7 +18,7 @@ export default function Model(props) {
     erwin.current.position !== store.getState().profile.position
       ? store.dispatch({
           type: "EDWIN POSITION",
-          position: erwin.current.position,
+          position: erwin.current.getWorldPosition(),
         })
       : null
   );

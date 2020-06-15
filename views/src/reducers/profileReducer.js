@@ -9,6 +9,8 @@ export default function profileReducer(state = initialState, action) {
   switch (action.type) {
     case "EDWIN POSITION":
       return { ...state, position: action.position };
+    case "EDWIN WORLD POSITION":
+      return { ...state, matrixWorld: action.matrixWorld };
     case "ID":
       return { ...state, id: action.id };
     case "DAT UPDATE":
