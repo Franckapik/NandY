@@ -5,29 +5,6 @@ const CANNON = require('cannon-es');
 var world = new CANNON.World();
 world.gravity.set(0, 0, -9.82);
 
-//props
-var radius = 1,
-        mass = 2,
-        f = 500
-      var dt = 1 / 60,
-        damping = 0.5
-
-//force sur le centre
-var shape = new CANNON.Sphere(radius)
-var body = new CANNON.Body({
-  mass: mass,
-  position: new CANNON.Vec3(0, 0, 1),
-})
-body.addShape(shape)
-body.linearDamping = body.angularDamping = damping
-world.addBody(body)
-
-// Add an force to the center
-var worldPoint = new CANNON.Vec3(0, 0, 0)
-var force = new CANNON.Vec3(f, 0, 0)
-body.applyForce(force, worldPoint)
-
-//end
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
@@ -60,7 +37,7 @@ const socketIO = () => {
           mass: 2,
           position: data.erwinPosition,
         })
-        body.linearDamping = body.angularDamping = damping
+        body.linearDamping = body.angularDamping = 0.5
         var worldPoint = new CANNON.Vec3(0, 0, 0)
         var force = new CANNON.Vec3(500, 0, 0)
         body.applyForce(force, worldPoint)
