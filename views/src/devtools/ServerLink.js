@@ -19,6 +19,14 @@ const ServerLink = (props) => {
     socket.emit('movement', {keys: keys, erwinPosition: erwinPosition});
   }, [keys])
 
+  socket.on('update', (data) => {
+  store.dispatch({
+    type: "SET POSITION",
+    position: data,
+  })  
+}
+  )
+
   return null
 }
 

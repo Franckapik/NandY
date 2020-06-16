@@ -11,17 +11,17 @@ export default function Camera() {
   camera.near = 0.1;
   camera.far = 1000;
 
-  useFrame(state => {
-store.dispatch({ type: "CAMERA POSITION", position: camera.position })
+  /*useFrame(state => {
+//store.dispatch({ type: "CAMERA POSITION", position: camera.position })
 let erwin = store.getState().profile;
-camera.position.x = erwin.position.x+10;
-camera.position.y = erwin.position.y+10;
-camera.position.z = erwin.position.z+30;
+camera.position.x = erwin.positionSocket.x+10;
+camera.position.y = erwin.positionSocket.y+10;
+camera.position.z = erwin.positionSocket.z+30;
 camera.lookAt(erwin.position)
 window.camera = camera
   }
 
-  );
+  );*/
 
 
   return null;

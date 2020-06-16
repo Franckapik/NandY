@@ -1,5 +1,5 @@
 let camera = {
-  orbitEnable: false,
+  orbitEnable: true,
 };
 
 export default function cameraReducer(state = camera, action) {

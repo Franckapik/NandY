@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var socket = require('./routes/socket');
+var cannon = require('./routes/voiture');
 
 var app = express();
 
@@ -30,6 +31,9 @@ app.get('/', (req, res) => {
 });
 app.get('/agenda', (req, res) => {
   res.sendFile(path.join(`${__dirname}/views/build/index.html`));
+});
+app.get('/voiture', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/routes/voiture.html`));
 });
 
 
