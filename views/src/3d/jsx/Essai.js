@@ -75,8 +75,6 @@ export default function Model(props) {
   useHingeConstraint(cube, wheelBodyLF, { pivotA: [-separationWheel, heightWheel, 0], axisA : leftFrontAxis, pivotB: zero, axisB: leftAxis })
 
 
-  //useFrame(() => keys.up && wheelApiLR.applyImpulse([force, 0, 0], [0, 0, 0]));
-  //useFrame(() => keys.down && wheelApiLR.applyImpulse([force * -1, 0, 0], [0, 0, 0]));
   useFrame(() => keys.up && wheelApiRR.applyImpulse([0, 0, force], [0, 0, 1]));
   useFrame(() => keys.down && wheelApiRR.applyImpulse([0, 0, force * -1], [0, 0, 1]));
   useFrame(() => keys.up && wheelApiLR.applyImpulse([0, 0, force], [0, 0, 1]));

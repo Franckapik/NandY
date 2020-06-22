@@ -1,7 +1,7 @@
 // Reducer
 
 let initialState = {
-  id: null,
+  id: 0,
   position: [0,0,0],
   velocity: [0,0,0],
   positionSocket : 0

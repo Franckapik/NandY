@@ -11,7 +11,7 @@ export default function App() {
   return (<BrowserRouter>
     <Header />
       <Switch>
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" component={Dvp}/>
         <Route path="/agenda" render={() => <Page name="agenda" />}/>
         <Route path="/blog" render={() => <Page name="blog" />}/>
         <Route path="/galleries" render={() => <Page name="gallerie" />}/>
