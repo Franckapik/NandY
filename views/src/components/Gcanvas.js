@@ -2,10 +2,14 @@ import React, { Suspense, useRef } from "react";
 import { Canvas, extend, Dom, useFrame } from "react-three-fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import Controls from "../devtools/Controls";
-import Master from "../3d/jsx/Master.js";
+import Master from "../3d/jsx/Rails.js";
+import Erwin from '../3d/jsx/Erwin.js'
+import Rails from '../3d/jsx/Rails.js'
+import Essai from '../3d/jsx/Essai.js'
 import store from "../store/store";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import Camera from '../devtools/Camera';
+import { Physics } from 'use-cannon'
 
 extend({ OrbitControls });
 
@@ -22,8 +26,9 @@ function Gcanvas() {
 function Scene() {
   return (
     <Suspense fallback={<Dom>loading...</Dom>}>
-      <color attach="background" args={["purple"]} />
-      <fog attach="fog" args={["grey", 5, 50]} />
+      <color attach="background" args={["orange"]} />
+      {/*<fog attach="fog" args={["grey", 5, 50]} />*/}
+      <ambientLight intensity={0.8} />
       <directionalLight
         position={[10, 200, 10]}
         angle={1}
@@ -33,7 +38,14 @@ function Scene() {
       />
       <Controls />
       <Camera />
-      <Master />
+      <Physics 
+      friction = {0.5}
+      restitution = {0.3
+      }>
+{/*     <Rails />
+        <Erwin />*/}
+        <Essai />
+      </Physics>
     </Suspense>
   );
 }
@@ -41,11 +53,7 @@ function Scene() {
 function ForwardCanvas({ children }) {
   return (
     <div className="canvas">
-      <Canvas
-        shadowMap="shadowMap"
-        sRGB="sRGB"
-        gl={{ alpha: false, antialias: false }}
-      >
+      <Canvas>
         <Provider store={store}>{children}</Provider>
       </Canvas>
     </div>

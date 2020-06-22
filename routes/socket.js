@@ -1,104 +1,77 @@
 const express = require('express');
 const app = express();
-const CANNON = require('cannon-es');
-const gameloop = require('node-gameloop');
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 io.set('origins', '*:*');
 server.listen(3002);
 
-const socketIO = () => {
+const WebSocket = require('ws');
+const CANNON = require('cannon-es');
+const { PerformanceObserver, performance } = require('perf_hooks');
 
     // Setup our world
     var world = new CANNON.World({
-      gravity: new CANNON.Vec3(0, 0, -9.82) // m/s²
-    });
+        gravity: new CANNON.Vec3(0, 0, -9.82) // m/s²
+      });
+        
+      // Create a sphere
+      var radius = 1; // m
+      var sphereBody = new CANNON.Body({
+        mass: 5, // kg
+        position: new CANNON.Vec3(0, 0, 10), // m
+        shape: new CANNON.Sphere(radius),
+        linearDamping:0.8,
+        angularDamping:0.8,
+      });
+      world.addBody(sphereBody);
       
-    // Create a sphere
-    var radius = 1; // m
-    var sphereBody = new CANNON.Body({
-      mass: 5, // kg
-      position: new CANNON.Vec3(0, 0, 10), // m
-      shape: new CANNON.Sphere(radius),
-      linearDamping:0.5,
-      angularDamping:0.5,
+      // Create a plane
+      var groundBody = new CANNON.Body({
+         mass: 0 // mass == 0 makes the body static
+      });
+      var groundShape = new CANNON.Plane();
+      groundBody.addShape(groundShape);
+      world.addBody(groundBody);
+
+const socket = () => {
+ 
+  const wss = new WebSocket.Server({ port: 8000 });
+ 
+  wss.on('connection', function connection(ws) {
+  
+    ws.on('message', function incoming(message) {
+      console.log('received: %s', message);
     });
-    world.addBody(sphereBody);
-    
-    // Create a plane
-    var groundBody = new CANNON.Body({
-       mass: 0 // mass == 0 makes the body static
-    });
-    var groundShape = new CANNON.Plane();
-    groundBody.addShape(groundShape);
-    world.addBody(groundBody);
-
-  app.locals.players = {}
-
-  //CONNECTION
-  io.on("connection", (socket) => {
-    app.locals.players[socket.id] = {
-      x: 0,
-      y: 0,
-      z: 0,
-      score: 10
-    };
-
-    //ENVOI ID
-    console.log("Player identification", socket.id);
-    socket.emit('id', socket.id)
-
+  
+    let frame = 0;
+  
     var fixedTimeStep = 1.0 / 60.0; // seconds
     var maxSubSteps = 3;
+  
+    let position = 0;
+    let lastTime;
+    const gameLoop = () => {
+        time = performance.now()
+        var dt = time - lastTime;
+        world.step(fixedTimeStep)
+        position = sphereBody.position;
+       // console.log(dt);
+        if(position.z < 1) {       
+          var impulse = new CANNON.Vec3(0, 0, 10 * dt)
+          sphereBody.applyImpulse(impulse, sphereBody.position) 
+        }
+        lastTime= time;       
+    }
+  
+    const socketLoop = () => {
+      ws.send(position.z)      
+    }
     
-    let frameCount = 0;
-    const id = gameloop.setGameLoop(function(delta) {
-      // `delta` is the delta time from the last frame
-      world.step(fixedTimeStep, delta, maxSubSteps);
-
-      //console.log('Hi there! (frame=%s, delta=%s)', frameCount++, delta);
-      console.log("Sphere position: " + sphereBody.position);
-
-          //RECEPTION KEYBOARD
-    socket.on('movement', function (data) {
-           
-      if (data.keys.up) {
-        var impulse = new CANNON.Vec3(5 * delta, 0, 0)
-        sphereBody.applyImpulse(impulse, sphereBody.position)
-      } 
-
-      app.locals.players[socket.id] = {
-        x:  sphereBody.position.x,
-        y:  sphereBody.position.y,
-        z:  sphereBody.position.z,
-      };
-      
-    });
-
-
-    }, 1000 / 10);
-    
-    // stop the loop 2 seconds later
-    setTimeout(function() {
-      console.log('2000ms passed, stopping the game loop');
-      gameloop.clearGameLoop(id);
-    }, 20000);
-
-
-
-    //DECONNECTION
-    socket.on("disconnect", () => {
-      console.log("Player disconnected", socket.id);
-      delete app.locals.players[socket.id];
-      io.emit('state', app.locals.players);
-    });
+    setInterval(gameLoop, fixedTimeStep*1000);
+    setInterval(socketLoop, 100);
+   
   });
 }
 
-setInterval(SEND,1000/60);
-function SEND(){
-    io.sockets.emit('update', app.locals.players);
-}
-
-module.exports = socketIO;
+module.exports = socket;

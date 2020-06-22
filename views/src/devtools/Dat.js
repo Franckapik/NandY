@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useSelector} from 'react-redux';
 import DatGui, {
   DatNumber,
   DatString,
@@ -12,18 +13,20 @@ const Dat = () => {
     store.dispatch({ type: "DAT UPDATE", newData: newData });
   };
 
-  store.subscribe(() => setData(store.getState()));
 
-  const [data, setData] = useState();
-  window.store = store.getState();
+  const state = useSelector(state => state)
+
   return (
     <div>
-      <DatGui data={data} onUpdate={handleUpdate}>
-        <DatFolder title="Position Edwin" closed="true">
+      <DatGui data={state} onUpdate={handleUpdate}>
+        <DatFolder title="Edwin" closed="true">
           <DatString path="profile.id" label="Id" />
-          <DatString path="profile.position.x" label="x" />
-          <DatString path="profile.position.y" label="y" />
-          <DatString path="profile.position.z" label="z" />
+          <DatString path="profile.position[0]" label="Position x" />
+          <DatString path="profile.position[1]" label="Position y" />
+          <DatString path="profile.position[2]" label="Position z" />
+          <DatString path="profile.velocity[0]" label="Velocity x" />
+          <DatString path="profile.velocity[1]" label="Velocity y" />
+          <DatString path="profile.velocity[2]" label="Velocity z" />
         </DatFolder>
         <DatFolder title="Clavier" closed="true">
           <DatBoolean path="keys.down" label="down" />

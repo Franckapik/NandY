@@ -17,14 +17,14 @@ useHotkeys('down', event => {
     store.dispatch({type: 'KEYUP' })
   } 
 }, { keyup: true});
-useHotkeys('left', event => {
+useHotkeys('up+left, down+left, left', event => {
   if (event.type === "keydown") {
     store.dispatch({type: 'KEYARROWLEFT' })
   } else if (event.type === 'keyup') {
     store.dispatch({type: 'KEYUP' })
   } 
 }, { keyup: true});
-useHotkeys('right', event => {
+useHotkeys('up+right, down+right, right', event => {
   if (event.type === "keydown") {
     store.dispatch({type: 'KEYARROWRIGHT' })
   } else if (event.type === 'keyup') {

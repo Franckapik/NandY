@@ -2,14 +2,17 @@
 
 let initialState = {
   id: null,
-  position: {x : 0, y:0, z:0},
-  positionSocket : {x : 0, y : 0, z : 0}
+  position: [0,0,0],
+  velocity: [0,0,0],
+  positionSocket : 0
 };
 
 export default function profileReducer(state = initialState, action) {
   switch (action.type) {
     case "EDWIN POSITION":
       return { ...state, position: action.position };
+    case "EDWIN VELOCITY":
+      return { ...state, velocity: action.velocity };
     case "SET POSITION":
       return { ...state, positionSocket: action.position };
     case "EDWIN WORLD POSITION":

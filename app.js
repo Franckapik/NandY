@@ -32,6 +32,9 @@ app.get('/', (req, res) => {
 app.get('/agenda', (req, res) => {
   res.sendFile(path.join(`${__dirname}/views/build/index.html`));
 });
+app.get('/dvp', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/views/build/index.html`));
+});
 app.get('/voiture', (req, res) => {
   res.sendFile(path.join(`${__dirname}/routes/voiture.html`));
 });

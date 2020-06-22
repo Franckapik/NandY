@@ -1,10 +1,10 @@
-import {useEffect} from 'react'
-import { socket } from '../Socket';
+import {useEffect, useState} from 'react'
 import useSocketEvent from '../hooks/useSocketEvent'
 import {useSelector, useDispatch} from 'react-redux'
 
 import store from '../store/store';
 
+/*
 const ServerLink = (props) => {
 
   //new player
@@ -27,6 +27,20 @@ const ServerLink = (props) => {
 }
   )
 
+  return null
+}*/
+
+const ServerLink = () => {
+
+  var ws = new WebSocket("ws://localhost:8000");
+  ws.onmessage = function (event) {
+  store.dispatch({
+    type: "SET POSITION",
+    position: event.data,
+  }) 
+  
+  };
+  
   return null
 }
 
