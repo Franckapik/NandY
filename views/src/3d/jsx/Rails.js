@@ -6,452 +6,448 @@ import * as THREE from 'three'
 import React, { useRef } from 'react'
 import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import {usePlane } from 'use-cannon'
-
 
 export default function Model(props) {
   const group = useRef()
-  const { nodes, materials } = useLoader(GLTFLoader, '/railsjoin.gltf')
-  const [solPlane, api2] = usePlane(() => ({ rotation: [0, 0, 0]}))
-
-
+  const { nodes, materials } = useLoader(GLTFLoader, '/rails.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[-283.43, -0.14, 207.17]} rotation={[0, -0.26, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <primitive object={nodes.Camera} />
+      <group position={[-283.43, -207.17, -0.14]} rotation={[0, 0, -0.26]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-818.35, -0.16, 335.59]} rotation={[0, -0.51, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-818.35, -335.59, -0.16]} rotation={[0, 0, -0.51]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-1281.14, -0.03, 553.58]} rotation={[0, -0.05, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-1281.14, -553.58, -0.03]} rotation={[0, 0, -0.05]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-1404.6, -0.05, 691.36]} rotation={[0, 0.43, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-1404.6, -691.36, -0.05]} rotation={[0, 0, 0.43]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-1397.17, -0.05, 825.42]} rotation={[-Math.PI, 1.47, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-1397.17, -825.42, -0.05]} rotation={[0, 0, 1.67]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-1216.37, -0.05, 776.69]} rotation={[-Math.PI, -0.16, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-1216.37, -776.69, -0.05]} rotation={[0, 0, -2.98]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-1108.78, -0.05, 644.33]} rotation={[-Math.PI, -0.09, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-1108.78, -644.33, -0.05]} rotation={[0, 0, -3.06]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-1002.93, -0.05, 594]} rotation={[-Math.PI, 0.68, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-1002.93, -594, -0.05]} rotation={[0, 0, 2.46]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-897.66, -0.05, 641.72]} rotation={[-Math.PI, 1.48, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-897.66, -641.72, -0.05]} rotation={[0, 0, 1.66]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-677.74, -0.05, 809.59]} rotation={[-Math.PI, 1.08, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-677.74, -809.59, -0.05]} rotation={[0, 0, 2.06]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-227.97, -0.05, 817.17]} rotation={[-Math.PI, 0.41, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-227.97, -817.17, -0.05]} rotation={[0, 0, 2.73]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[236.55, -0.05, 469.08]} rotation={[-Math.PI, -0.21, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[236.55, -469.08, -0.05]} rotation={[0, 0, -2.93]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[407.47, -0.05, -50.87]} rotation={[-Math.PI, -0.74, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[407.47, 50.87, -0.05]} rotation={[0, 0, -2.41]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[408.76, -0.05, -432.02]} rotation={[-Math.PI, -0.98, -Math.PI]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[408.76, 432.02, -0.05]} rotation={[0, 0, -2.16]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[309.92, -0.05, -553.2]} rotation={[0, -0.9, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[309.92, 553.2, -0.05]} rotation={[0, 0, -0.9]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[189.42, -0.05, -499.38]} rotation={[0, 0.05, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[189.42, 499.38, -0.05]} rotation={[0, 0, 0.05]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[30.33, -0.05, -394.69]} rotation={[0, -0.42, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[30.33, 394.69, -0.05]} rotation={[0, 0, -0.42]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-324.02, -0.05, -346.37]} rotation={[0, -0.61, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-324.02, 346.37, -0.05]} rotation={[0, 0, -0.61]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-625.22, -0.05, -280.67]} rotation={[0, -0.36, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-625.22, 280.67, -0.05]} rotation={[0, 0, -0.36]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-909.48, -0.05, -94.09]} rotation={[0, 0.17, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <group position={[-909.48, 94.09, -0.05]} rotation={[0, 0, 0.17]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       </group>
-      <group position={[-1017.1, -0.05, 180.82]} rotation={[0, 0.7, 0]}>
-        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]}>
+      <group position={[-1017.1, -180.82, -0.05]} rotation={[0, 0, 0.7]}>
+        <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]}>
           <mesh
             material={materials['Acier brun']}
             geometry={nodes.traverse.geometry}
-            position={[0.01, 18.32, -0.01]}
-            rotation={[Math.PI / 2, 0, -0.69]}
+            position={[0.01, 0.01, 18.32]}
+            rotation={[Math.PI / 2, 0.69, 0]}
           />
         </mesh>
       </group>
-      <group position={[32.29, 1.2, -231.9]}>
+      <group position={[32.29, 231.9, 1.2]}>
         <mesh
           material={nodes.Lampadaire.material}
           geometry={nodes.Lampadaire.geometry}
-          position={[-7.87, 13.5, -32.56]}
-          scale={[0.73, 16.96, 0.73]}
+          position={[-7.87, 32.56, 13.5]}
+          scale={[0.73, 0.73, 16.96]}
         />
         <mesh
           material={materials.Faisceau}
           geometry={nodes.Faisceau.geometry}
-          position={[-7.87, 33.47, -32.56]}
+          position={[-7.87, 32.56, 33.47]}
           scale={[16.3, 16.3, 16.3]}
         />
       </group>
-      <group position={[-258.41, 1.32, -26.29]}>
+      <group position={[-258.41, 26.29, 1.32]}>
         <mesh
           material={nodes.Lampadaire.material}
           geometry={nodes.Lampadaire.geometry}
-          position={[-7.87, 13.5, -32.56]}
-          scale={[0.73, 16.96, 0.73]}
+          position={[-7.87, 32.56, 13.5]}
+          scale={[0.73, 0.73, 16.96]}
         />
         <mesh
           material={materials.Faisceau}
           geometry={nodes.Faisceau.geometry}
-          position={[-7.87, 33.47, -32.56]}
+          position={[-7.87, 32.56, 33.47]}
           scale={[16.3, 16.3, 16.3]}
         />
       </group>
-      <group position={[-499.44, -0.83, -201.9]}>
+      <group position={[-499.44, 201.9, -0.83]}>
         <mesh
           material={nodes.Lampadaire.material}
           geometry={nodes.Lampadaire.geometry}
-          position={[-7.87, 13.5, -32.56]}
-          scale={[0.73, 16.96, 0.73]}
+          position={[-7.87, 32.56, 13.5]}
+          scale={[0.73, 0.73, 16.96]}
         />
         <mesh
           material={materials.Faisceau}
           geometry={nodes.Faisceau.geometry}
-          position={[-7.87, 33.47, -32.56]}
+          position={[-7.87, 32.56, 33.47]}
           scale={[16.3, 16.3, 16.3]}
         />
       </group>
-      <group position={[-729.31, -0.83, -201.9]}>
+      <group position={[-729.31, 201.9, -0.83]}>
         <mesh
           material={nodes.Lampadaire.material}
           geometry={nodes.Lampadaire.geometry}
-          position={[-7.87, 13.5, -32.56]}
-          scale={[0.73, 16.96, 0.73]}
+          position={[-7.87, 32.56, 13.5]}
+          scale={[0.73, 0.73, 16.96]}
         />
         <mesh
           material={materials.Faisceau}
           geometry={nodes.Faisceau.geometry}
-          position={[-7.87, 33.47, -32.56]}
+          position={[-7.87, 32.56, 33.47]}
           scale={[16.3, 16.3, 16.3]}
         />
       </group>
       <mesh
         material={nodes.dworzec.material}
         geometry={nodes.dworzec.geometry}
-        position={[-357.88, -0.68, -36.15]}
-        rotation={[0, 0.69, 0]}
+        position={[-357.88, 36.15, -0.68]}
+        rotation={[0, 0, 0.69]}
         scale={[6.69, 6.69, 6.69]}
       />
       <mesh
         material={nodes.Cube077.material}
         geometry={nodes.Cube077.geometry}
-        position={[-505.06, 7.78, 471.24]}
-        scale={[9.31, 10.35, 12.79]}
+        position={[-505.06, -471.24, 7.78]}
+        scale={[9.31, 12.79, 10.35]}
       />
       <mesh
         material={nodes.kosciol1.material}
         geometry={nodes.kosciol1.geometry}
-        position={[-556.36, -0.96, 471.25]}
-        scale={[9.22, 14.56, 9.22]}
+        position={[-556.36, -471.25, -0.96]}
+        scale={[9.22, 9.22, 14.56]}
       />
       <mesh
         material={nodes.Bridge.material}
         geometry={nodes.Bridge.geometry}
-        position={[-1129.81, 31.62, 246.62]}
-        rotation={[0, 0.21, 0]}
-        scale={[4.23, 5.97, 3.59]}
+        position={[-1129.81, -246.62, 31.62]}
+        rotation={[0, 0, 0.21]}
+        scale={[4.23, 3.59, 5.97]}
       />
       <mesh
         material={nodes.dom_opata.material}
         geometry={nodes.dom_opata.geometry}
-        position={[-355.98, -1.12, 234.36]}
+        position={[-355.98, -234.36, -1.12]}
         scale={[40.03, 2.25, 2.25]}
       />
       <mesh
         material={nodes.kopalnia.material}
         geometry={nodes.kopalnia.geometry}
-        position={[-1655.39, 6.12, 687.83]}
-        rotation={[-1.68, 0.11, 0.77]}
+        position={[-1655.39, -687.83, 6.12]}
+        rotation={[-Math.PI / 2, -0.77, 0.15]}
         scale={[25.5, 25.5, 25.5]}
       />
       <mesh
         material={nodes.Cube288.material}
         geometry={nodes.Cube288.geometry}
-        position={[-924.17, -2.75, -213.47]}
-        rotation={[0, 0.37, 0]}
-        scale={[2.46, 1.5, 2.63]}
+        position={[-924.17, 213.47, -2.75]}
+        rotation={[0, 0, 0.37]}
+        scale={[2.46, 2.63, 1.5]}
       />
       <mesh
         material={nodes.Circle120.material}
         geometry={nodes.Circle120.geometry}
-        position={[-211.21, 0.04, -221.17]}
-        scale={[0.81, 1.5, 0.81]}>
+        position={[-211.21, 221.17, 0.04]}
+        scale={[0.81, 0.81, 1.5]}>
         <mesh
           material={nodes.Cube540.material}
           geometry={nodes.Cube540.geometry}
-          position={[-0.08, 25.59, 0]}
-          scale={[2.08, 1.13, 2.08]}
+          position={[-0.08, 0, 25.59]}
+          scale={[2.08, 2.08, 1.13]}
         />
       </mesh>
       <mesh
         material={nodes.Cube538.material}
         geometry={nodes.Cube538.geometry}
-        position={[-194.17, 5.51, -218.66]}
+        position={[-194.17, 218.66, 5.51]}
         rotation={[1.4, 0, 0]}
-        scale={[12.57, 0.95, 1.37]}
+        scale={[12.57, 1.37, 0.95]}
       />
       <mesh
         material={nodes.Cube539.material}
         geometry={nodes.Cube539.geometry}
-        position={[-213.2, 3.38, -214.65]}
-        scale={[2.92, 4.13, 2.97]}
+        position={[-213.2, 214.65, 3.38]}
+        scale={[2.92, 2.97, 4.13]}
       />
       <mesh
         material={nodes.Cube541.material}
         geometry={nodes.Cube541.geometry}
-        position={[-199.9, -1.11, -234.57]}
-        scale={[67.83, 0.66, 56.21]}
+        position={[-199.9, 234.57, -1.11]}
+        scale={[67.83, 56.21, 0.66]}
       />
       <mesh
         material={nodes.Cylinder070.material}
         geometry={nodes.Cylinder070.geometry}
-        position={[-258.22, 2.26, -232.29]}
-        scale={[0.85, 2.86, 0.85]}
+        position={[-258.22, 232.29, 2.26]}
+        scale={[0.85, 0.85, 2.86]}
       />
       <mesh
         material={nodes.Cylinder072.material}
         geometry={nodes.Cylinder072.geometry}
-        position={[-228.86, 12.54, -249.82]}
-        rotation={[0, Math.PI / 2, 0]}
-        scale={[1.11, 14.72, 1.11]}
+        position={[-228.86, 249.82, 12.54]}
+        rotation={[0, 0, Math.PI / 2]}
+        scale={[1.11, 1.11, 14.72]}
       />
       <mesh
         material={nodes.Cylinder073.material}
         geometry={nodes.Cylinder073.geometry}
-        position={[-184.59, 2.26, -232.29]}
-        scale={[0.85, 2.86, 0.85]}
+        position={[-184.59, 232.29, 2.26]}
+        scale={[0.85, 0.85, 2.86]}
       />
       <mesh
         material={nodes.Tour.material}
         geometry={nodes.Tour.geometry}
-        position={[-241.41, 115.1, 18.39]}
-        scale={[9.02, 7.57, 9.02]}
+        position={[-241.41, -18.39, 115.1]}
+        scale={[9.02, 9.02, 7.57]}
       />
       <mesh
         material={nodes.Lampadaire.material}
         geometry={nodes.Lampadaire.geometry}
-        position={[-7.87, 13.5, -32.56]}
-        scale={[0.73, 16.96, 0.73]}
+        position={[-7.87, 32.56, 13.5]}
+        scale={[0.73, 0.73, 16.96]}
       />
       <mesh
         material={nodes.glasplanes.material}
         geometry={nodes.glasplanes.geometry}
-        position={[91.76, 1.88, 2.74]}
-        scale={[0.02, 1.84, 1.2]}
+        position={[91.76, -2.74, 1.88]}
+        scale={[0.02, 1.2, 1.84]}
       />
       <mesh
         material={nodes.mainbody.material}
         geometry={nodes.mainbody.geometry}
-        position={[92.58, 1.8, 4.3]}
+        position={[92.58, -4.3, 1.8]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={[0.09, 0.32, 0.13]}
+        scale={[0.09, 0.13, 0.32]}
       />
       <mesh
         material={nodes.poster.material}
         geometry={nodes.poster.geometry}
-        position={[92.95, 1.87, 8.22]}
-        scale={[1.52, 1.82, 0.07]}
+        position={[92.95, -8.22, 1.87]}
+        scale={[1.52, 0.07, 1.82]}
       />
       <mesh
         material={nodes.roof.material}
         geometry={nodes.roof.geometry}
-        position={[93, 4.33, 4.3]}
-        scale={[2.44, 2.61, 4.29]}
+        position={[93, -4.3, 4.33]}
+        scale={[2.44, 4.29, 2.61]}
       />
       <mesh
         material={nodes.screws.material}
         geometry={nodes.screws.geometry}
-        position={[91.96, 1.87, 3.66]}
-        scale={[0.18, 0.11, 0.09]}
+        position={[91.96, -3.66, 1.87]}
+        scale={[0.18, 0.09, 0.11]}
       />
       <mesh
         material={nodes.seat.material}
         geometry={nodes.seat.geometry}
-        position={[91.53, 0.23, 5.93]}
-        scale={[0.56, 0.04, 0.56]}
+        position={[91.53, -5.93, 0.23]}
+        scale={[0.56, 0.56, 0.04]}
       />
       <mesh
         material={nodes.shield.material}
         geometry={nodes.shield.geometry}
-        position={[96.43, 1.48, 8.1]}
-        rotation={[0, 1.07, 0]}
-        scale={[0.08, 2.41, 0.08]}
+        position={[96.43, -8.1, 1.48]}
+        rotation={[0, 0, 1.07]}
+        scale={[0.08, 0.08, 2.41]}
       />
       <mesh
         material={nodes.sign.material}
         geometry={nodes.sign.geometry}
-        position={[96.47, 3.18, 8.01]}
-        rotation={[-Math.PI, -1.07, -Math.PI / 2]}
+        position={[96.47, -8.01, 3.18]}
+        rotation={[-Math.PI / 2, 0.5, -Math.PI / 2]}
         scale={[0.61, 0.61, 0.61]}
       />
       <mesh
         material={nodes.streetinternetbox.material}
         geometry={nodes.streetinternetbox.geometry}
-        position={[91.72, -0.93, -2.53]}
-        rotation={[0, 0.06, 0]}
-        scale={[0.47, 0.34, 1.12]}
+        position={[91.72, 2.53, -0.93]}
+        rotation={[0, 0, 0.06]}
+        scale={[0.47, 1.12, 0.34]}
       />
       <mesh
         material={nodes.trashcan.material}
         geometry={nodes.trashcan.geometry}
-        position={[93.13, -0.93, -1.57]}
-        rotation={[Math.PI, -Math.PI / 4, Math.PI]}
+        position={[93.13, 1.57, -0.93]}
+        rotation={[0, 0, -2.36]}
         scale={[0.53, 0.53, 0.53]}
       />
       <mesh
         material={nodes.trashcanmetal.material}
         geometry={nodes.trashcanmetal.geometry}
-        position={[93.13, -0.93, -1.57]}
-        rotation={[Math.PI, -Math.PI / 4, Math.PI]}
+        position={[93.13, 1.57, -0.93]}
+        rotation={[0, 0, -2.36]}
         scale={[0.53, 0.53, 0.53]}
       />
       <mesh
         material={nodes.trashcantorus.material}
         geometry={nodes.trashcantorus.geometry}
-        position={[93.13, -0.93, -1.57]}
-        rotation={[Math.PI, -Math.PI / 4, Math.PI]}
+        position={[93.13, 1.57, -0.93]}
+        rotation={[0, 0, -2.36]}
         scale={[0.53, 0.53, 0.53]}
       />
       <mesh
         material={nodes.trashcanwood.material}
         geometry={nodes.trashcanwood.geometry}
-        position={[93.13, -0.93, -1.57]}
-        rotation={[Math.PI, -Math.PI / 4, Math.PI]}
+        position={[93.13, 1.57, -0.93]}
+        rotation={[0, 0, -2.36]}
         scale={[0.53, 0.53, 0.53]}
       />
       <mesh
         material={nodes.MARCO001.material}
         geometry={nodes.MARCO001.geometry}
-        position={[114.55, 1.65, 0]}
-        rotation={[Math.PI / 2, 0, -Math.PI]}
+        position={[114.55, 0, 1.65]}
+        rotation={[-Math.PI / 2, 0, Math.PI]}
         scale={[0, 0, 0]}>
         <mesh
           material={nodes['AFICHE-A001'].material}
           geometry={nodes['AFICHE-A001'].geometry}
           position={[0, 0, 0]}
-          rotation={[0, 0, -Math.PI]}
+          rotation={[-Math.PI, 0, -Math.PI]}
         />
         <mesh material={nodes['AFICHE-B001'].material} geometry={nodes['AFICHE-B001'].geometry} position={[0, 0, 0]} />
-        <mesh material={nodes.BASE001.material} geometry={nodes.BASE001.geometry} position={[0, 0, 1315]} />
+        <mesh material={nodes.BASE001.material} geometry={nodes.BASE001.geometry} position={[0, -1315, 0]} />
         <mesh
           material={nodes.TUBOS_de_LUZ001.material}
           geometry={nodes.TUBOS_de_LUZ001.geometry}
           position={[0, 0, 0]}
-          rotation={[Math.PI / 2, 0, Math.PI]}
-          scale={[-19.53, -662.51, -19.53]}
+          rotation={[-Math.PI / 2, 0, -Math.PI]}
+          scale={[-19.53, -19.53, -662.51]}
         />
         <mesh
           material={materials.luz}
           geometry={nodes.Plane007.geometry}
-          position={[0, 0, -198.95]}
-          rotation={[0, 0, Math.PI]}
-          scale={[396.13, 396.13, 620.88]}
+          position={[0, 198.95, 0]}
+          rotation={[-Math.PI, 0, -Math.PI]}
+          scale={[396.13, 620.88, 396.13]}
         />
       </mesh>
       <mesh material={materials['Material.001']} geometry={nodes.Cone.geometry} position={[105.84, 0, 0]} />
-      <group position={[-7.87, 1.32, -32.56]}>
+      <group position={[-7.87, 32.56, 1.32]}>
         <mesh material={materials['Material.015']} geometry={nodes['Plane.001_0'].geometry} />
         <mesh material={materials['Material.016']} geometry={nodes['Plane.001_1'].geometry} />
         <mesh material={materials['Material.017']} geometry={nodes['Plane.001_2'].geometry} />
-        <mesh material={materials['Material.018']} geometry={nodes.Rails001.geometry} position={[0, 29.63, 0]} />
+        <mesh material={materials['Material.018']} geometry={nodes.Rails001.geometry} position={[0, 0, 29.63]} />
       </group>
-      <group position={[-7.87, 1.32, -32.56]}>
+      <group position={[-7.87, 32.56, 1.32]}>
         <mesh material={materials['Material.015']} geometry={nodes['Plane.005_0'].geometry} />
         <mesh material={materials['Material.016']} geometry={nodes['Plane.005_1'].geometry} />
         <mesh material={materials['Material.017']} geometry={nodes['Plane.005_2'].geometry} />
       </group>
-      <mesh ref={solPlane} material={materials.Green} geometry={nodes.Sol.geometry} />
-      <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 21.6, -52.97]} />
+      <mesh material={materials.Green} geometry={nodes.Sol.geometry} />
+      <mesh material={materials['Acier brun']} geometry={nodes.Poteau.geometry} position={[-337.21, 52.97, 21.6]} />
       <mesh
         material={materials.Faisceau}
         geometry={nodes.Faisceau.geometry}
-        position={[-7.87, 33.47, -32.56]}
+        position={[-7.87, 32.56, 33.47]}
         scale={[16.3, 16.3, 16.3]}
       />
       <mesh
         material={materials.shadeWhite}
         geometry={nodes.shadeWhite119.geometry}
-        position={[124.78, -4.81, 0.39]}
+        position={[124.78, -0.39, -4.81]}
         scale={[1.37, 1.37, 1.37]}
       />
       <mesh
         material={materials.shadeWhite}
         geometry={nodes.shadeWhite001.geometry}
-        position={[124.78, -4.81, -1.02]}
+        position={[124.78, 1.02, -4.81]}
         scale={[1.37, 1.37, 1.37]}
       />
       <mesh
         material={materials.shadeWhite}
         geometry={nodes.shadeWhite002.geometry}
-        position={[124.78, -4.81, -2.43]}
+        position={[124.78, 2.43, -4.81]}
         scale={[1.37, 1.37, 1.37]}
       />
       <mesh
         material={materials.shadeWhite}
         geometry={nodes.shadeWhite003.geometry}
-        position={[124.78, -4.21, -0.38]}
+        position={[124.78, 0.38, -4.21]}
         scale={[1.37, 1.37, 1.37]}
       />
       <mesh
         material={materials.shadeWhite}
         geometry={nodes.shadeWhite004.geometry}
-        position={[124.78, -4.21, -1.8]}
+        position={[124.78, 1.8, -4.21]}
         scale={[1.37, 1.37, 1.37]}
       />
       <mesh
         material={materials['shadeWhite.001']}
         geometry={nodes.shadeWhite_002.geometry}
-        position={[128.13, -5.1, 3]}
-        rotation={[0, -Math.PI / 2, 0]}
+        position={[128.13, -3, -5.1]}
+        rotation={[0, 0, -Math.PI / 2]}
       />
       <mesh
         material={materials['shadeWhite.001']}
         geometry={nodes.shadeWhite_015.geometry}
-        position={[126.88, -5.12, 3.79]}
+        position={[126.88, -3.79, -5.12]}
         scale={[0.16, 0.16, 0.16]}
       />
       <mesh
         material={materials['shadeWhite.001']}
         geometry={nodes.shadeWhite_015002.geometry}
-        position={[128.34, -5.12, 4.36]}
+        position={[128.34, -4.36, -5.12]}
         scale={[0.16, 0.16, 0.16]}
       />
       <mesh
         material={materials.shadeBeige}
         geometry={nodes.shadeBeige001.geometry}
-        position={[132.14, -5.18, 0]}
-        rotation={[0, 0.44, 0]}
+        position={[132.14, 0, -5.18]}
+        rotation={[0, 0, 0.44]}
         scale={[1.45, 1.45, 1.45]}
       />
       <mesh
         material={materials.shadeBrown}
         geometry={nodes.shadeBrown002.geometry}
-        position={[133.21, -4.02, -0.91]}
-        rotation={[0, 0.44, 0]}
+        position={[133.21, 0.91, -4.02]}
+        rotation={[0, 0, 0.44]}
       />
       <mesh
         material={materials.shadeBrown}
         geometry={nodes.shadeBrown006.geometry}
-        position={[130.75, -4.02, 0.24]}
-        rotation={[0, 0.44, 0]}
+        position={[130.75, -0.24, -4.02]}
+        rotation={[0, 0, 0.44]}
       />
     </group>
   )

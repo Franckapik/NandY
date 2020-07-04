@@ -11,13 +11,12 @@ body {
   overflow: hidden;
   color: $dark;
 
-  p {
     font-family: 'Josefin Slab', serif;
     font-size: 1em;
     font-weight: regular;
     letter-spacing: 0.05em;
     line-height: 1em;
-  }
+
 
 
   h1,
@@ -31,49 +30,17 @@ a {
   color: $white;
 }
 
-.hometext {
-  position: relative;
-  width: 50%;
+.board {
+  background-color: red;
   height: 100%;
-}
-
-.homecanvas {
-  position: absolute;
+  width: 100%;
 }
 
 
-
-.mainDom {
-  position: absolute;
-  font-size: 2em;
-  z-index: 1;
-  height: 100%;
-  width: 40%;
-
-  ul {
-    font-size: 0.4em;
-  }
-}
-
-.dashbd {
-  text-align: center;
-}
-
-.Keyboard {
-  position: fixed;
-  top: 10px;
-}
 
 .canvas {
   width: 100vw;
-  height: 100vh;
-  position: absolute;
-}
-
-.bgImg {
-  object-fit: cover;
-  width: 100vw;
-  height: 100vh;
+  height: 100vh; //80vw
 }
 
 .header {
@@ -85,9 +52,14 @@ a {
   letter-spacing: 0.05em;
   line-height: 1em;
   color: $white;
+  z-index : 2;
  
   svg {
     margin-right: 15px;
   }
+}
+
+.modal {
+  overflow: hidden;
 }
 

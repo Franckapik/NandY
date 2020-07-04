@@ -3,12 +3,10 @@ import React, { useRef, useEffect } from "react";
 import { useLoader, useFrame } from "react-three-fiber";
 import { useSelector } from "react-redux";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import lerp from "lerp";
 import { useBox, usePlane, useSphere, useHingeConstraint } from "use-cannon";
 import store from "../../store/store";
 import {useHelper} from 'drei';
 import { BoxHelper, SpotLightHelper, PointLightHelper } from "three"
-import { VertexNormalsHelper } from "three/examples/jsm/helpers/VertexNormalsHelper"
 
 
 
@@ -20,8 +18,8 @@ export default function Model(props) {
 
   const position = useSelector((state) => state.profile.positionSocket);
 
-  let keys = useSelector((state) => state.keys);
-  let force = 10;
+  let force = useSelector((state) => state.keyboard.force);
+  let rotation = useSelector((state) => state.keyboard.rotation);
 
   const [cube, api] = useBox(() => ({
     mass: 10,
@@ -75,16 +73,12 @@ export default function Model(props) {
   useHingeConstraint(cube, wheelBodyLF, { pivotA: [-separationWheel, heightWheel, 0], axisA : leftFrontAxis, pivotB: zero, axisB: leftAxis })
 
 
-  useFrame(() => keys.up && wheelApiRR.applyImpulse([0, 0, force], [0, 0, 1]));
-  useFrame(() => keys.down && wheelApiRR.applyImpulse([0, 0, force * -1], [0, 0, 1]));
-  useFrame(() => keys.up && wheelApiLR.applyImpulse([0, 0, force], [0, 0, 1]));
-  useFrame(() => keys.down && wheelApiLR.applyImpulse([0, 0, force * -1], [0, 0, 1]));
+  useFrame(() => wheelApiRF.applyImpulse([0, 0, force], [0, 0, 1]) && wheelApiLF.applyImpulse([0, 0, force], [0, 0, 1]));
   
-  const braque = 6;
-  useFrame(() => keys.right && wheelApiRF.rotation.set(0, -Math.PI / braque, 0 ));
-  useFrame(() => keys.right && wheelApiLF.rotation.set(0, -Math.PI / braque, 0 ));
-  useFrame(() => keys.left && wheelApiLF.rotation.set(0, Math.PI / braque, 0 ));
-  useFrame(() => keys.left && wheelApiRF.rotation.set(0, Math.PI / braque, 0 )  );
+ 
+  useFrame(() => wheelApiRF.rotation.set(0,rotation,0));
+  useFrame(() => wheelApiLF.rotation.set(0,rotation,0));
+
   
 
 
@@ -104,14 +98,21 @@ export default function Model(props) {
     []
   );
 
+ 
+  
+  
+  
+ 
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh ref= {wheelBodyLF} material={nodes.wLF.material} geometry={nodes.wLF.geometry} position={[-1.31, 1.36, 0]} />
-      <mesh ref= {wheelBodyRF} material={nodes.wRF.material} geometry={nodes.wRF.geometry} position={[1.28, 1.36, 0]} />
-      <mesh ref= {wheelBodyLR} material={nodes.wBL.material} geometry={nodes.wBL.geometry} position={[-1.31, -1.49, 0]} />
-      <mesh ref= {wheelBodyRR} material={nodes.wBR.material} geometry={nodes.wBR.geometry} position={[1.28, -1.49, 0]} />
-      <mesh ref= {cube} material={materials.Material} geometry={nodes.Cube.geometry} position={[0, 0, 1]} />
-      <mesh ref= {plane} material={materials['Material.001']} geometry={nodes.Plane.geometry} />
+      <mesh   ref= {wheelBodyLF} material={nodes.wLF.material} geometry={nodes.wLF.geometry} position={[-1.31, 1.27, 2.38]} />
+      <mesh  ref= {wheelBodyRF} material={nodes.wRF.material} geometry={nodes.wRF.geometry} position={[1.28, 1.27, 2.38]} />
+      <mesh ref= {wheelBodyLR} material={nodes.wBL.material} geometry={nodes.wBL.geometry} position={[-1.31, -1.27, 2.38]} />
+      <mesh ref= {wheelBodyRR} material={nodes.wBR.material} geometry={nodes.wBR.geometry} position={[1.28, -1.27, 2.38]} />
+      <mesh material={nodes.obstacle.material} geometry={nodes.obstacle.geometry} position={[0, 18.74, 1]} />
+      <mesh ref= {cube} material={materials.Material} geometry={nodes.Cube.geometry} position={[0, 0, 2.86]} />
+      <mesh  ref= {plane} material={materials['Material.001']} geometry={nodes.Plane.geometry} />
+
     </group>
   );
 }

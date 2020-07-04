@@ -12,11 +12,12 @@ export default function Model(props) {
   const { nodes, materials } = useLoader(GLTFLoader, '/essai.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh material={nodes.wLF.material} geometry={nodes.wLF.geometry} position={[-1.31, 1.36, 0]} />
-      <mesh material={nodes.wRF.material} geometry={nodes.wRF.geometry} position={[1.28, 1.36, 0]} />
-      <mesh material={nodes.wBL.material} geometry={nodes.wBL.geometry} position={[-1.31, -1.49, 0]} />
-      <mesh material={nodes.wBR.material} geometry={nodes.wBR.geometry} position={[1.28, -1.49, 0]} />
-      <mesh material={materials.Material} geometry={nodes.Cube.geometry} position={[0, 0, 1]} />
+      <mesh material={nodes.wLF.material} geometry={nodes.wLF.geometry} position={[-1.31, 1.27, 2.38]} />
+      <mesh material={nodes.wRF.material} geometry={nodes.wRF.geometry} position={[1.28, 1.27, 2.38]} />
+      <mesh material={nodes.wBL.material} geometry={nodes.wBL.geometry} position={[-1.31, -1.27, 2.38]} />
+      <mesh material={nodes.wBR.material} geometry={nodes.wBR.geometry} position={[1.28, -1.27, 2.38]} />
+      <mesh material={nodes.obstacle.material} geometry={nodes.obstacle.geometry} position={[0, 18.74, 1]} />
+      <mesh material={materials.Material} geometry={nodes.Cube.geometry} position={[0, 0, 2.86]} />
       <mesh material={materials['Material.001']} geometry={nodes.Plane.geometry} />
     </group>
   )

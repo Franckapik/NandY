@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {useSelector} from 'react-redux';
 import DatGui, {
   DatNumber,
   DatString,
   DatFolder,
-  DatBoolean,
+  DatBoolean
 } from "react-dat-gui";
 import store from "../store/store";
 
@@ -19,7 +19,7 @@ const Dat = () => {
   return (
     <div>
       <DatGui data={state} onUpdate={handleUpdate}>
-        <DatFolder title="Edwin" closed="true">
+        <DatFolder title="Car" >
           <DatString path="profile.id" label="Id" />
           <DatString path="profile.position[0]" label="Position x" />
           <DatString path="profile.position[1]" label="Position y" />
@@ -28,18 +28,37 @@ const Dat = () => {
           <DatString path="profile.velocity[1]" label="Velocity y" />
           <DatString path="profile.velocity[2]" label="Velocity z" />
         </DatFolder>
-        <DatFolder title="Clavier" closed="true">
-          <DatBoolean path="keys.down" label="down" />
-          <DatBoolean path="keys.up" label="up" />
-          <DatBoolean path="keys.left" label="left" />
-          <DatBoolean path="keys.right" label="right" />
+        <DatFolder title="Clavier" >
+          <DatBoolean path="keyboard.down" label="down" />
+          <DatBoolean path="keyboard.up" label="up" />
+          <DatBoolean path="keyboard.left" label="left" />
+          <DatBoolean path="keyboard.right" label="right" />
+          <DatNumber path="keyboard.force" min={-50} max={50} step={1} label="force" />
+          <DatNumber path="keyboard.rotation" min={-50} max={50} step={1} label="rotation" />
         </DatFolder>
-        <DatFolder title="Camera" closed="false">
+        <DatFolder title="Camera" >
           <DatBoolean path="camera.orbitEnable" label="OrbitControls" />
-          <DatString path="camera.position.x" label="x" />
-          <DatString path="camera.position.y" label="y" />
-          <DatString path="camera.position.z" label="z" />
-        </DatFolder>
+          <DatNumber path="camera.position[0]" min={-100} max={100} step={1} label="x" />
+          <DatNumber path="camera.position[1]" min={-100} max={100} step={1} label="y" />
+          <DatNumber path="camera.position[2]" min={-100} max={100} step={1} label="z" />
+          <DatNumber path="camera.maxDistance" min={-100} max={100} step={1} label="maxDistance" />
+          <DatNumber path="camera.minDistance" min={-100} max={100} step={1} label="minDistance" />
+          <DatNumber path="camera.maxPolarAngle" min={-100} max={100} step={1} label="maxPolarAngle" />
+          <DatNumber path="camera.minPolarAngle" min={-100} max={100} step={1} label="minPolarAngle" />
+          <DatBoolean path="camera.defaultTarget" label="defaultTarget" />
+          <DatString path="camera.raycast.x" label="Raycast x" />
+          <DatString path="camera.raycast.y" label="Raycast y" />
+          <DatString path="camera.raycast.z" label="Raycast z" />
+          <DatBoolean path="camera.enableRay" label="enableRay" />
+          </DatFolder>
+        <DatFolder title="Items">
+        <DatString path="items.items[0]" label="Items" />
+        <DatString path="items.items[1]" label="Items" />
+        <DatString path="items.items[2]" label="Items" />
+        <DatString path="items.items[3]" label="Items" />
+
+          </DatFolder>
+
       </DatGui>
     </div>
   );
