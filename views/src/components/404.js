@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class NotFoundPage extends Component {
+class er404 extends Component {
   render() {
     return (
       <div className='center'>
@@ -13,4 +13,4 @@ class NotFoundPage extends Component {
   }
 }
 
-export default NotFoundPage;
+export default er404;

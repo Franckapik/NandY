@@ -1,5 +1,7 @@
+const { default: store } = require("./views/src/store/store")
+
 Changelog
-v0.0.1
+v1.0.1
 Socket.io mis en place (interaction ok)
 Mis en place d'un store avec zustand
 Controls au clavier
@@ -14,23 +16,23 @@ Mise en place de routes
 Style général appliqué
 Premier jeu : collision, score, pas encore de synchronisation entre joueurs.
 
-
-browserlist a changer
-----------------------
-Clarté dans le commande -> codesandboxable
-Elminer toutes forme d'erreurs actuelle
+v1.0.1
 Test des contraintes pivots
 Identifier toutes les variables à mettre sur le DAT
 Utilisation fine de applyImpulse
 
-Debuguer pour use-cannon ?
-
-
-
-Freestyle : il semblerait que cela soit compromis -> post processor à utiliser.
-
-
-
+v1.0.2
 Sauvegarde du serveur ?
 Animation from blender : https://spectrum.chat/react-three-fiber/general/need-to-import-camera-animation-from-blender-control-its-timeline-from-react~5c247a65-9c92-44cf-ad2c-ccf55e248958
 Router onclick : https://spectrum.chat/react-three-fiber/general/clicking-meshes-to-load-other-pages-react-router~3d87ef88-b55f-4a95-b3ca-733480bac833
+
+Travail à faire :
+-Problème actuel réside dans la lenteur fps observée dans firefox/chrome. Est-ce lié aux states de position velocité ? 
+-Questionnement sur le store.
+-Information de jouabilité du jeu. Fleches et mouvements. Pourquoi pas sur le panneau information.
+-Parcours pour aider le joueur au sol ? Commencer au tram.  
+-Personnage en plus.
+-batiments en fonds
+-sauvegarde du jeu
+-faire appariatre des touffes d'herbe
+-evolution du paysage au fur et à mesure du parcours. défoncé -> jardin.

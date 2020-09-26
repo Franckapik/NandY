@@ -11,8 +11,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var socket = require('./routes/socket');
-var cannon = require('./routes/voiture');
+
 
 var app = express();
 
@@ -35,13 +34,10 @@ app.get('/agenda', (req, res) => {
 app.get('/dvp', (req, res) => {
   res.sendFile(path.join(`${__dirname}/views/build/index.html`));
 });
-app.get('/voiture', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/routes/voiture.html`));
-});
 
 
 
-socket();
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
