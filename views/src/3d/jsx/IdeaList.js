@@ -6,12 +6,13 @@ import * as THREE from 'three'
 import React, { useRef } from 'react'
 import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import store from '../../store/store'
 import { Provider, useSelector } from "react-redux";
+import useStore from '../../store/zstore';
+
 
 
 export default function IdeaList (props) {
-  const ideaList = useSelector((state) => state.assets.idea);
+  const ideaList = useStore(state => state.idea)
   return (
       
         ideaList.map((a, i) => {
@@ -24,11 +25,16 @@ export default function IdeaList (props) {
 const Idea = (props) => {
   const group = useRef()
   const { nodes, materials } = useLoader(GLTFLoader, '/ampoule.gltf')
+  const changeId = useStore(state => state.changeId);
+  const changeContent = useStore(state => state.changeContent)
+  const togglePop = useStore(state => state.togglePop)
+
+
   return (
     <group ref={group} {...props} dispose={null} onClick={() => {
-      store.dispatch({type : "OPEN MODAL"})
-      store.dispatch({type : 'CHANGE CONTENT', content : 'showidea'})
-      store.dispatch({type : 'CHANGE ID IDEA', ideaId : props.ideaId})
+      togglePop();
+      changeContent('showidea');
+      changeId(props.ideaId);
     }}>
       <mesh material={materials['Matcap jaune']} geometry={nodes['Sphere.011_0'].geometry} />
       <mesh material={materials['Matcap orange']} geometry={nodes['Sphere.011_1'].geometry} />

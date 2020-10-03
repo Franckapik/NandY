@@ -22,16 +22,17 @@ Identifier toutes les variables à mettre sur le DAT
 Utilisation fine de applyImpulse
 
 v1.0.2
+Changement de store vers zustand
 Sauvegarde du serveur ?
 Animation from blender : https://spectrum.chat/react-three-fiber/general/need-to-import-camera-animation-from-blender-control-its-timeline-from-react~5c247a65-9c92-44cf-ad2c-ccf55e248958
 Router onclick : https://spectrum.chat/react-three-fiber/general/clicking-meshes-to-load-other-pages-react-router~3d87ef88-b55f-4a95-b3ca-733480bac833
 
 Travail à faire :
+-Personnage en plus.
 -Problème actuel réside dans la lenteur fps observée dans firefox/chrome. Est-ce lié aux states de position velocité ? 
--Questionnement sur le store.
+-mettre une rue pavé
 -Information de jouabilité du jeu. Fleches et mouvements. Pourquoi pas sur le panneau information.
 -Parcours pour aider le joueur au sol ? Commencer au tram.  
--Personnage en plus.
 -batiments en fonds
 -sauvegarde du jeu
 -faire appariatre des touffes d'herbe

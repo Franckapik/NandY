@@ -12,7 +12,6 @@ export default function Plane(props) {
       visible={false}
       receiveShadow="receiveShadow"
       onPointerMove={(e) => {
-        //store.dispatch({type : 'RAYCAST', raycast : e.point })
       }}
     >
       <planeBufferGeometry attach="geometry" args={[0, 50, 0]} />

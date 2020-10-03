@@ -4,9 +4,10 @@ import { useSelector } from "react-redux";
 import { useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useBox } from 'use-cannon';
+import useStore from "../store/zstore";
 export const CrateList = () => {
 
-  const crates = useSelector(state => state.assets.crates);
+const crates = useStore(state => state.crates);
 
   return (
     crates.map((a, i) => {

@@ -1,19 +1,19 @@
-import React, { useRef } from "react";
-import { useThree } from "react-three-fiber";
+import React from "react";
 import { Text } from "drei";
 import Infos from './Infos';
-import store from '../../store/store'
-
-import { useSelector } from "react-redux";
+import useStore from "../../store/zstore";
 
 export default function PanneauInfos(props) {
-  const { viewport } = useThree();
-  const txt = useSelector((state) => state.assets.panneauInfos)
+  const signTxt = useStore(state => state.info)
+  const changeContent = useStore(state => state.changeContent)
+  const togglePop = useStore(state => state.togglePop)
+
 
   return (
     <group {...props} onClick={()=> {
-      store.dispatch({type : 'CHANGE CONTENT', content : 'info'}); 
-      store.dispatch({type : 'OPEN MODAL'})
+      changeContent('info');
+      togglePop();
+
     }}>
     <Text
       position={[0,5.6,0.26]}
@@ -27,7 +27,7 @@ export default function PanneauInfos(props) {
       maxWidth={"4.5"}
       anchorY="middle"
     >
-      {txt}
+      {signTxt}
     </Text>
     <Infos/>
     </group>

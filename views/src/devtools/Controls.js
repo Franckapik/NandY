@@ -1,9 +1,7 @@
 import * as THREE from "three";
 import React, {useRef} from 'react'
 import {useFrame, useThree} from 'react-three-fiber'
-import store from '../store/store'
-import {useSelector, useDispatch} from 'react-redux'
-import { useState } from 'react';
+import useStore from "../store/zstore";
 
 
 export default function Controls() {
@@ -11,23 +9,15 @@ export default function Controls() {
   window.controls = controlsRef.current
   const { scene, camera, gl, mouse, raycaster } = useThree();
 
-  const orbitEnable = useSelector(state => state.camera.orbitEnable)
-  const erwin = useSelector((state) => state.profile.position);
-  const target = useSelector((state) => state.camera.target);
-  const defaultTarget = useSelector((state) => state.camera.defaultTarget);
-  let cameraState = useSelector((state) => state.camera);
+  const position = useStore(state => state.position)
+  const orbit = useStore(state => state.orbit)
+  const target = useStore(state => state.target)
 
 
-  //camera.position.x = 20;
   useFrame(() => {
-
-    //console.log(erwin);
-    let c = new THREE.Vector3().fromArray(erwin)
+    let c = new THREE.Vector3().fromArray(position)
     window.mouse = mouse;
     window.c = c ;
-    //let a = {x : 0, y : 0, z : 0}
-    //let d = c.distanceTo(a);
-    // y = 20 -d 
     camera.position.x = 10;
     camera.translateZ(c.z)
     if(defaultTarget) {
@@ -36,7 +26,6 @@ export default function Controls() {
     controlsRef.current && controlsRef.current.update()
     window.camera = camera
     window.ray = raycaster
-
   });
 
 
@@ -47,16 +36,16 @@ export default function Controls() {
       enableRotate={false}
       enableDamping
       dampingFactor={0.1}
-      enabled={orbitEnable}
+      enabled={orbit}
       enableKeys={false}
       target={target}
       enablePan = {false}
       enableZoom
-      maxDistance={cameraState.maxDistance}
-      minDistance={cameraState.minDistance}
+      maxDistance={100}
+      minDistance={20}
       zoomSpeed={5}
-      minPolarAngle={cameraState.minPolarAngle}
-      maxPolarAngle={cameraState.maxPolarAngle}
+      minPolarAngle={Math.PI/6}
+      maxPolarAngle={Math.PI/2.5}
       mouseButtons = {{ LEFT : 2}}
     />
   );

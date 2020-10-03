@@ -1,11 +1,13 @@
 import React from "react";
-import store from "../../store/store";
 import { useForm } from "react-hook-form";
+import useStore from "../../store/zstore";
 export const GiveMessage = (props) => {
   const { register, handleSubmit } = useForm();
+  const addMsg = useStore(state => state.addMsg);
+  const togglePop = useStore(state => state.togglePop)
   const onSubmit = (data) => {
-    store.dispatch({ type: "ADD MSG", msgAdded: data });
-    store.dispatch({ type: "CLOSE MODAL" });
+  addMsg(data);
+  togglePop();
   };
 
   return (

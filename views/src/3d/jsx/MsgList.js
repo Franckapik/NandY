@@ -6,12 +6,11 @@ import * as THREE from 'three'
 import React, { useRef } from 'react'
 import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import store from '../../store/store'
-import { Provider, useSelector } from "react-redux";
+import useStore from '../../store/zstore';
 
 
 export default function MsgList (props) {
-  const msgList = useSelector((state) => state.assets.msg);
+  const msgList = useStore(state => state.message)
   return (
       
         msgList.map((a, i) => {
@@ -24,11 +23,16 @@ export default function MsgList (props) {
 const Msg = (props) => {
   const group = useRef()
   const { nodes, materials } = useLoader(GLTFLoader, '/msg.gltf')
+  const changeId = useStore(state => state.changeId);
+  const changeContent = useStore(state => state.changeContent)
+  const togglePop = useStore(state => state.togglePop)
+
+
   return (
     <group ref={group} {...props} dispose={null} onClick={() => {
-      store.dispatch({type : "OPEN MODAL"})
-      store.dispatch({type : 'CHANGE CONTENT', content : 'showmsg'})
-      store.dispatch({type : 'CHANGE ID MSG', msgId : props.msgId})
+      togglePop();
+      changeContent('showmsg');
+      changeId(props.msgId);
     }}>
       <group>
         <mesh material={materials['Matcap beige']} geometry={nodes['Cube.025_0'].geometry} />

@@ -4,16 +4,17 @@ import {useSphere} from 'use-cannon'
 import { useSelector } from "react-redux";
 import { VertexNormalsHelper } from "three/examples/jsm/helpers/VertexNormalsHelper"
 import { useHelper } from "drei"
-import store from '../store/store'
+import useStore from '../store/zstore';
 
 
 
 
 export default function useMouvement() {
 
-  let force = useSelector((state) => state.keyboard.force);
-  let rotation = useSelector((state) => state.keyboard.rotation);
-
+  let force = useStore(state => state.force)
+  let rotation = useStore(state => state.rotation)
+  let changePosition = useStore(state => state.changePosition)
+  let changeVelocity = useStore(state => state.changeVelocity)
 
 
   const [ref, api] = useSphere(() => ({
@@ -44,15 +45,14 @@ export default function useMouvement() {
 useEffect(
   () =>
     api.position.subscribe((position) =>
-      store.dispatch({ type: "EDWIN POSITION", position: position })
-      
+    changePosition(position)
     ),
   []
 );
 useEffect(
   () =>
     api.velocity.subscribe((velocity) =>
-      store.dispatch({ type: "EDWIN VELOCITY", velocity: velocity })
+    changeVelocity(velocity)
     ),
   []
 );

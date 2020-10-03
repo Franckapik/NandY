@@ -1,13 +1,13 @@
 import { useFrame, useThree } from "react-three-fiber";
 import { useSelector } from "react-redux";
+import useStore from "../store/zstore";
 
 export default function Camera() {
   const { camera } = useThree();
-  let c = useSelector((state) => state.camera.position);
-  const e = useSelector((state) => state.profile.position);
-  camera.fov = 190;
+  const e = useStore(state => state.position)
+  camera.fov = 100;
 
-  useFrame((state) => {
+  useFrame(() => {
     camera.position.set(e[0] + 10, e[1] + 15, e[2] + 10);
     camera.lookAt(e[0], e[1] + 8, e[2]);
    // window.camera = camera;

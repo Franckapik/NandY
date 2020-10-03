@@ -1,20 +1,24 @@
 import React from "react";
-import store from "../../store/store";
 import { useForm } from "react-hook-form";
+import useStore from "../../store/zstore";
+
+
 export const GiveIdea = (props) => {
   const { register, handleSubmit } = useForm();
+  const addIdea = useStore(state => state.addIdea);
+  const togglePop = useStore(state => state.togglePop)
   const onSubmit = (data) => {
-    store.dispatch({ type: "ADD IDEA", ideaAdded: data });
-    store.dispatch({ type: "CLOSE MODAL" });
+  addIdea(data);
+    togglePop()
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>Titre
-      <input type="text" name="title" ref={register} />
+      <input type="text" name="Titre" ref={register} />
       </label>
       <label>Explications
-      <textarea name="msg" ref={register}>
+      <textarea name="Explication" ref={register}>
       </textarea>
       </label>
       <input type="submit" value={"Envoyer"} />

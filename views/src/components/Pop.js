@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
-import store from "../store/store";
 import { useSelector } from "react-redux";
+import useStore from "../store/zstore";
 
 const customStyles = {
   content: {
@@ -19,10 +19,10 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 export default function Pop({ children, title }) {
-  const isOpen = useSelector((state) => state.dom.isOpen);
+  const isOpen = useStore(state => state.popOpen)
+  const togglePop = useStore(state => state.togglePop)
 
   function openModal() {
-    store.dispatch({ type: "OPEN MODAL" });
   }
 
   function afterOpenModal() {
@@ -30,7 +30,7 @@ export default function Pop({ children, title }) {
   }
 
   function closeModal() {
-    store.dispatch({ type: "CLOSE MODAL" });
+    togglePop()  
   }
 
   return (
