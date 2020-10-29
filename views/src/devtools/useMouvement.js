@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import {useFrame} from 'react-three-fiber'
-import {useSphere} from 'use-cannon'
+import {useSphere} from 'use-cannon2'
 import { useSelector } from "react-redux";
 import { VertexNormalsHelper } from "three/examples/jsm/helpers/VertexNormalsHelper"
 import { useHelper } from "drei"
@@ -21,7 +21,7 @@ export default function useMouvement() {
     position : [0,3,0],
     type: "dynamic",
     mass: 10,
-    radius : 0.2,
+    radius : 2,
     linearDamping:0.5,
     angularDamping:0.5,
     allowSleep:false,

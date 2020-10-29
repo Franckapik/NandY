@@ -29,6 +29,8 @@
     "socket.io-client": "^2.3.0",
     "three": "^0.120.1",
     "use-cannon": "^0.5.3",
+    "use-cannon2": "github:pmndrs/use-cannon#experimental/bounding-boxes",
+    "yuka": "^0.3.7",
     "zustand": "^3.1.3"
   },
   "scripts": {

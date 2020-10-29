@@ -7,7 +7,6 @@ import React, { useRef, useEffect} from 'react'
 import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import useStore from '../../store/zstore'
-import { useBox } from 'use-cannon2'
 
 
 
@@ -18,11 +17,6 @@ export default function Model(props) {
   const [beige, blanc, bleu, gris, jaune, marron, noir, orange, rouge, turquoise, vert] = useLoader(THREE.TextureLoader, ['./matcaps/beige.png','./matcaps/blanc.png','./matcaps/bleu.png','./matcaps/gris.png','./matcaps/jaune.png','./matcaps/marron.png','./matcaps/noir.png','./matcaps/orange.png','./matcaps/rouge.png','./matcaps/turquoise.png','./matcaps/vert.png'])
   const setVideoPos = useStore(state => state.setVideoPos)
 
-  const [cube, api] = useBox(() => ({
-    mass: 40,
-  }));
-
- 
   let posPanneau = useRef();
   useEffect(() => {
     setVideoPos(posPanneau.current.position)
@@ -60,14 +54,14 @@ export default function Model(props) {
       <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes.Cube055.geometry} position={[-60.72, 12.42, -0.7]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes.Sphere004.geometry} position={[20.84, 1.76, -84.9]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes.Text003.geometry} position={[-23.04, 6, 73.38]} />
-      <group ref={cube}  position={[27.13, 3.47, -32.89]}>
+      <group position={[27.13, 3.47, -32.89]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes.Affiche1_0.geometry} />
         <mesh material={materials['Texture Tomato']} geometry={nodes.Affiche1_1.geometry} />
       </group>
       <mesh material={new THREE.MeshMatcapMaterial({matcap : beige})} geometry={nodes.Sphere005.geometry} position={[29.69, 1.76, -84.9]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : beige})} geometry={nodes.Cube539.geometry} position={[9.08, 0.76, -33.68]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : beige})} geometry={nodes.Cube006.geometry} position={[-47.75, 3.87, 3.87]} />
-      <group ref={cube}  position={[-27.79, 2.81, -20.17]}>
+      <group position={[-27.79, 2.81, -20.17]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : beige})} geometry={nodes['Cube.049_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.049_1'].geometry} />
       </group>
@@ -75,7 +69,7 @@ export default function Model(props) {
       <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes.Cube538.geometry} position={[13.69, 0.88, -33.8]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes.Cube053.geometry} position={[-60.95, 10.28, -0.11]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes.Cube054.geometry} position={[-60.95, 12.27, -0.11]} />
-      <group ref={cube}  position={[-30.59, 4.19, 59.44]}>
+      <group position={[-30.59, 4.19, 59.44]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.019_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['Cube.019_1'].geometry} />
       </group>
@@ -84,11 +78,11 @@ export default function Model(props) {
       <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes.Plane008.geometry} position={[-20.6, 4.86, 50.47]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes.Plane009.geometry} position={[-16.92, 7.09, 45.24]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes.Plane010.geometry} position={[-9.33, 1.72, 43.24]} />
-      <group ref={cube}  position={[86.99, 2.56, -45.49]}>
+      <group position={[86.99, 2.56, -45.49]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : beige})} geometry={nodes['Cube.025_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.025_1'].geometry} />
       </group>
-      <group ref={cube}  position={[29.6, 3.75, 66.07]}>
+      <group position={[29.6, 3.75, 66.07]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.000_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : beige})} geometry={nodes['Cube.000_1'].geometry} />
       </group>
@@ -137,32 +131,32 @@ export default function Model(props) {
         geometry={nodes.shadeWhite008.geometry}
         position={[-33.97, 1.25, 5.77]}
       />
-      <group ref={cube}  position={[-62.8, 9.17, -0.34]}>
+      <group position={[-62.8, 9.17, -0.34]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['defaultMaterial.001_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['defaultMaterial.001_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['defaultMaterial.001_2'].geometry} />
       </group>
-      <group ref={cube}  position={[-59.19, 9.17, -0.13]}>
+      <group position={[-59.19, 9.17, -0.13]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['defaultMaterial.002_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['defaultMaterial.002_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['defaultMaterial.002_2'].geometry} />
       </group>
-      <group ref={cube}  position={[-60.9, 11.29, -0.13]}>
+      <group position={[-60.9, 11.29, -0.13]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['defaultMaterial.004_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['defaultMaterial.004_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['defaultMaterial.004_2'].geometry} />
       </group>
-      <group ref={cube}  position={[-20.87, 1.07, 72.09]}>
+      <group position={[-20.87, 1.07, 72.09]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['defaultMaterial.005_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['defaultMaterial.005_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['defaultMaterial.005_2'].geometry} />
       </group>
-      <group ref={cube}  position={[-18.47, 1.07, 74.55]}>
+      <group position={[-18.47, 1.07, 74.55]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['defaultMaterial.006_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['defaultMaterial.006_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['defaultMaterial.006_2'].geometry} />
       </group>
-      <group ref={cube}  position={[29.56, 9.34, 66.28]}>
+      <group position={[29.56, 9.34, 66.28]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : jaune})} geometry={nodes['Sphere.011_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['Sphere.011_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['Sphere.011_2'].geometry} />
@@ -173,15 +167,15 @@ export default function Model(props) {
       <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes.radio_3.geometry} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes.Cylinder007.geometry} position={[0, 15, 0]} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.Sphere007.geometry} position={[33.87, 1.76, -84.9]} />
-      <group ref={cube}  position={[-36.25, 1.58, 2.08]}>
+      <group position={[-36.25, 1.58, 2.08]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Cone.001_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cone.001_1'].geometry} />
       </group>
-      <group ref={cube}  position={[-41.47, 1.58, -3.61]}>
+      <group position={[-41.47, 1.58, -3.61]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Cone.002_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cone.002_1'].geometry} />
       </group>
-      <group ref={cube}  position={[-38.46, 1.58, -2.34]}>
+      <group position={[-38.46, 1.58, -2.34]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Cone.003_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cone.003_1'].geometry} />
       </group>
@@ -215,17 +209,17 @@ export default function Model(props) {
         geometry={nodes.Cylinder005.geometry}
         position={[16.85, 0.99, -67.59]}
       />
-      <group ref={cube}  position={[-27.62, 0.93, -52.6]}>
+      <group position={[-27.62, 0.93, -52.6]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cylinder.090_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cylinder.090_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : turquoise})} geometry={nodes['Cylinder.090_2'].geometry} />
       </group>
-      <group ref={cube}  position={[1.01, 0.72, -13.76]}>
+      <group position={[1.01, 0.72, -13.76]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Cube.017_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.017_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.017_2'].geometry} />
       </group>
-      <group ref={cube}  position={[-58.64, 4.45, 0.45]}>
+      <group position={[-58.64, 4.45, 0.45]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['8_Material #38_0.001_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['8_Material #38_0.001_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : bleu})} geometry={nodes['8_Material #38_0.001_2'].geometry} />
@@ -234,27 +228,27 @@ export default function Model(props) {
         <mesh material={new THREE.MeshMatcapMaterial({matcap : jaune})} geometry={nodes['8_Material #38_0.001_5'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : jaune})} geometry={nodes['8_Material #38_0.001_6'].geometry} />
       </group>
-      <group ref={cube}  position={[2.33, 0.72, -12.02]}>
+      <group position={[2.33, 0.72, -12.02]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Cube.153_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.153_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.153_2'].geometry} />
       </group>
-      <group ref={cube}  position={[5.54, 0.72, -13.85]}>
+      <group position={[5.54, 0.72, -13.85]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Cube.154_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.154_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.154_2'].geometry} />
       </group>
-      <group ref={cube}  position={[23.07, 1.98, 0]}>
+      <group position={[23.07, 1.98, 0]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.161_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Cube.161_1'].geometry} />
       </group>
-      <group ref={cube}  position={[-66.66, 8.17, -54.58]}>
+      <group position={[-66.66, 8.17, -54.58]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : bleu})} geometry={nodes['Cylinder.052_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cylinder.052_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : beige})} geometry={nodes['Cylinder.052_2'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cylinder.052_3'].geometry} />
       </group>
-      <group ref={cube}  position={[-60.8, 14.16, 2.35]}>
+      <group position={[-60.8, 14.16, 2.35]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : beige})} geometry={nodes['Cube.162_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : bleu})} geometry={nodes['Cube.162_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['Cube.162_2'].geometry} />
@@ -271,49 +265,49 @@ export default function Model(props) {
         geometry={nodes.Object_20002.geometry}
         position={[-78.73, 1.34, -37.44]}
       />
-      <group ref={cube}  position={[-62.93, 6.37, -38.3]}>
+      <group position={[-62.93, 6.37, -38.3]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : jaune})} geometry={nodes['Cube.165_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['Cube.165_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.165_2'].geometry} />
       </group>
-      <group ref={cube}  position={[82.24, 1.07, -7.47]}>
+      <group position={[82.24, 1.07, -7.47]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.crateGeom_0.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes.crateGeom_1.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes.crateGeom_2.geometry} />
       </group>
-      <group ref={cube}  position={[-51.56, 1.82, -41.67]}>
+      <group position={[-51.56, 1.82, -41.67]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Cone.007_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cone.007_1'].geometry} />
       </group>
-      <group ref={cube}  ref={posPanneau} position={[92.5, 2.3, 22.22]}>
+      <group ref={posPanneau} position={[92.5, 2.3, 22.22]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : bleu})} geometry={nodes.PanneauInfosGeom_0.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes.PanneauInfosGeom_1.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.PanneauInfosGeom_2.geometry} />
       </group>
-      <group ref={cube}  position={[-20.12, 6.37, 79.42]}>
+      <group position={[-20.12, 6.37, 79.42]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : jaune})} geometry={nodes['Cube.023_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['Cube.023_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.023_2'].geometry} />
       </group>
-      <group ref={cube}  position={[-43.49, 2.4, 14.3]}>
+      <group position={[-43.49, 2.4, 14.3]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : bleu})} geometry={nodes['Light Ad Mesh_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Light Ad Mesh_1'].geometry} />
       </group>
-      <group ref={cube}  position={[17.37, 2.41, 36.69]}>
+      <group position={[17.37, 2.41, 36.69]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : bleu})} geometry={nodes['Cube.024_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.024_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['Cube.024_2'].geometry} />
       </group>
       <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.Cylinder.geometry} position={[17.33, -0.06, 37.16]} />
-      <group ref={cube}  position={[-11.99, 1.51, -73.99]}>
+      <group position={[-11.99, 1.51, -73.99]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.026_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.026_1'].geometry} />
       </group>
-      <group ref={cube}  position={[5.98, 1.51, -73.99]}>
+      <group position={[5.98, 1.51, -73.99]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.028_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.028_1'].geometry} />
       </group>
-      <group ref={cube}  position={[55.77, 0.93, 46.4]}>
+      <group position={[55.77, 0.93, 46.4]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cylinder.011_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cylinder.011_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : turquoise})} geometry={nodes['Cylinder.011_2'].geometry} />
@@ -324,7 +318,7 @@ export default function Model(props) {
         position={[29.55, 0.99, 65.99]}
       />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.Cylinder016.geometry} />
-      <group ref={cube}  position={[87.77, 3.03, 20.72]}>
+      <group position={[87.77, 3.03, 20.72]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.switchGeom_0.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes.switchGeom_1.geometry} />
       </group>
@@ -333,7 +327,7 @@ export default function Model(props) {
         geometry={nodes.Building_construction001.geometry}
         position={[-67.97, 19.85, -42.57]}
       />
-      <group ref={cube}  position={[-44.57, 29.76, -64.49]}>
+      <group position={[-44.57, 29.76, -64.49]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes.Cylinder_0.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.Cylinder_1.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : bleu})} geometry={nodes.Cylinder_2.geometry} />
@@ -349,25 +343,25 @@ export default function Model(props) {
         geometry={nodes.shadeWhite_015.geometry}
         position={[-25.08, 0.14, -18.11]}
       />
-      <group ref={cube}  position={[55.76, 3.47, 15.54]}>
+      <group position={[55.76, 3.47, 15.54]}>
         <mesh material={materials['Texture Cap']} geometry={nodes.Affiche2_0.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes.Affiche2_1.geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes.Affiche2_2.geometry} />
       </group>
-      <group ref={cube}  position={[-34.25, 4.19, -93.41]}>
+      <group position={[-34.25, 4.19, -93.41]}>
         <mesh material={materials['Texture Aquerelle 2']} geometry={nodes['Cube.006_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.006_1'].geometry} />
         <mesh material={materials['Texture Aquerelle 3']} geometry={nodes['Cube.006_2'].geometry} />
         <mesh material={materials['Texture Aquerellle 4']} geometry={nodes['Cube.006_3'].geometry} />
         <mesh material={materials['Texture Aquerellle 5']} geometry={nodes['Cube.006_4'].geometry} />
       </group>
-      <group ref={cube}  position={[-24.16, 3.47, -32.89]}>
+      <group position={[-24.16, 3.47, -32.89]}>
         <mesh material={materials['Texture Obsolete']} geometry={nodes['Affiche2.001_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['Affiche2.001_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : rouge})} geometry={nodes['Affiche2.001_2'].geometry} />
       </group>
       <mesh material={new THREE.MeshMatcapMaterial({matcap : gris})} geometry={nodes.Sphere009.geometry} position={[37.76, 1.76, -84.9]} />
-      <group ref={cube}  position={[-18.33, 4.15, 44.24]}>
+      <group position={[-18.33, 4.15, 44.24]}>
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['Cube.071_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['Cube.071_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes['Cube.071_2'].geometry} />
@@ -384,22 +378,22 @@ export default function Model(props) {
         geometry={nodes.Carblock_Sticks.geometry}
         position={[-50.86, 2.64, 14.3]}
       />
-      <group ref={cube}  position={[93.74, 1.07, 0]}>
+      <group position={[93.74, 1.07, 0]}>
         <mesh material={materials['Matcap flower']} geometry={nodes['crateGeom2.002_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['crateGeom2.002_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['crateGeom2.002_2'].geometry} />
       </group>
-      <group ref={cube}  position={[90.12, 1.07, 0]}>
+      <group position={[90.12, 1.07, 0]}>
         <mesh material={materials['Matcap engrais']} geometry={nodes['crateGeom2.003_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['crateGeom2.003_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['crateGeom2.003_2'].geometry} />
       </group>
-      <group ref={cube}  position={[86.8, 1.07, 0]}>
+      <group position={[86.8, 1.07, 0]}>
         <mesh material={materials['Matcap explode']} geometry={nodes['crateGeom2.004_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['crateGeom2.004_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['crateGeom2.004_2'].geometry} />
       </group>
-      <group ref={cube}  position={[82.85, 1.07, 0]}>
+      <group position={[82.85, 1.07, 0]}>
         <mesh material={materials['Matcap media']} geometry={nodes['crateGeom2.005_0'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : marron})} geometry={nodes['crateGeom2.005_1'].geometry} />
         <mesh material={new THREE.MeshMatcapMaterial({matcap : noir})} geometry={nodes['crateGeom2.005_2'].geometry} />
@@ -411,7 +405,7 @@ export default function Model(props) {
       <mesh material={materials['Glass Simple.001']} geometry={nodes['BezierCurve.002_4'].geometry} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : orange})} geometry={nodes['BezierCurve.002_5'].geometry} />
       <mesh material={new THREE.MeshMatcapMaterial({matcap : turquoise})} geometry={nodes['BezierCurve.002_6'].geometry} />
-      <group ref={cube}  position={[-64.71, 29.47, -85.43]}>
+      <group position={[-64.71, 29.47, -85.43]}>
         <mesh material={materials['Material.002']} geometry={nodes['Cylinder.019_0'].geometry} />
         <mesh material={materials.Hook} geometry={nodes['Cylinder.019_1'].geometry} />
         <mesh material={materials['Hook 2']} geometry={nodes['Cylinder.019_2'].geometry} />

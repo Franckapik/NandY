@@ -1,11 +1,13 @@
 import React, { Suspense } from "react";
 import Plane from "../3d/jsx/Plane.js";
 import Joueur from "../3d/jsx/Joueur";
-import { Physics } from "use-cannon";
+import { Physics } from "use-cannon2";
 import Camera from "../devtools/Camera";
 import PanneauInfos from "../3d/jsx/PanneauInfos";
-import { HTML } from "drei";
+import { HTML, Sky } from "drei";
 import All from "../3d/jsx/All";
+import {Active, CollisionBlocks, NavMesh, Passive} from "../3d/jsx/All2";
+import {Traversant} from "../3d/jsx/All2";
 import { Controls, useControl } from "react-three-gui";
 import Video from "./Video";
 import Radio from "../3d/jsx/Radio";
@@ -22,6 +24,12 @@ import PopList from "./PopList.js";
 import { Canvas } from 'react-three-fiber';
 import Budie from '../3d/jsx/Budie';
 import Brick from "../3d/jsx/Brick.js";
+import Sol from "../3d/jsx/Sol.js";
+import Town from "../3d/jsx/Town.js";
+import {VehicleMesh, TargetMesh} from "../3d/jsx/TryYuka.js";
+import { Manager } from '../devtools/useYukaFollowRegion.js'
+
+
 
 
 const Gcanvas = () => {
@@ -55,7 +63,7 @@ const Main = () => {
 
   const ambientLight = useControl("AmbientLight", {
     type: "number",
-    value: 1,
+    value: 0.5,
   });
   const bgColor = useControl("BG Color", { type: "color", value: "#264653" });
 
@@ -63,15 +71,25 @@ const Main = () => {
     <Canvas>
     <Suspense fallback={<HTML>loading...</HTML>}>
       <color attach="background" args={[bgColor]} />
-      <fog attach="fog" args={[bgColor, 5, 100]} />
+      <fogExp2 attach="fog" args={['black', 0.03]} />
       {/*<lensFlare size={512} color={'purple'}/>*/}
       <ambientLight intensity={ambientLight} />
       <axesHelper />
       <Camera />
-      <Budie position={[5,0,0]} />
-      <All />
+      <Sol />
+      <Sky
+        distance={3000} 
+        turbidity={2} 
+        rayleigh={4} 
+        mieCoefficient={0.038} 
+        mieDirectionalG={0.85} 
+        sunPosition={[Math.PI, -10, 0]}
+        exposure = {5}
+        azimuth={0.5}
+        />
 
-      <Brick />
+      
+      <Town />
       <CrateCreator />
       <SetEmptyPosition />
       <PanneauInfos position={[32, 3, 22]} />
@@ -81,7 +99,16 @@ const Main = () => {
         rotation={[0, Math.PI, 0]}
         position={videoPos}
       />
+      <Traversant />
+      <NavMesh />
+     <Manager>
+     <VehicleMesh name="Vehicle" />
+      <TargetMesh name="Target" position={[0,10,-12]} />
+     </Manager>
       <Physics allowSleep={true} friction={0.5} restitution={0.3}>
+      <Passive />
+      <CollisionBlocks />
+      <Active />
         <Joueur />
         <Plane />
         <MsgList />

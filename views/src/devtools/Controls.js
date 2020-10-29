@@ -15,17 +15,7 @@ export default function Controls() {
 
 
   useFrame(() => {
-    let c = new THREE.Vector3().fromArray(position)
-    window.mouse = mouse;
-    window.c = c ;
-    camera.position.x = 10;
-    camera.translateZ(c.z)
-    if(defaultTarget) {
-      controlsRef.current.target = c;
-    }
-    controlsRef.current && controlsRef.current.update()
-    window.camera = camera
-    window.ray = raycaster
+
   });
 
 
@@ -39,7 +29,7 @@ export default function Controls() {
       enabled={orbit}
       enableKeys={false}
       target={target}
-      enablePan = {false}
+      enablePan = {true}
       enableZoom
       maxDistance={100}
       minDistance={20}

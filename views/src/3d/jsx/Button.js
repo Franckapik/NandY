@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import { useLoader, useThree } from 'react-three-fiber'
 import {useSelector} from 'react-redux';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useBox } from 'use-cannon'
+import { useBox } from 'use-cannon2'
 import useStore from '../../store/zstore'
 
 export default function Button(props) {
@@ -13,10 +13,15 @@ export default function Button(props) {
   const togglePop = useStore(state => state.togglePop)
   const crates = useStore(state => state.crates)
   const [beige, blanc, bleu, gris, jaune, marron, noir, orange, rouge, turquoise, vert] = useLoader(THREE.TextureLoader, ['./matcaps/beige.png','./matcaps/blanc.png','./matcaps/bleu.png','./matcaps/gris.png','./matcaps/jaune.png','./matcaps/marron.png','./matcaps/noir.png','./matcaps/orange.png','./matcaps/rouge.png','./matcaps/turquoise.png','./matcaps/vert.png'])
+  const [cube, api] = useBox(() => ({
+    mass: 1,
+    args : [2,2,2],
+    position: props.position,
+  }));
 
   return (
-    <group {...props} >
-        <mesh material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.switchGeom_0.geometry} />
+    <group  {...props} >
+        <mesh ref={cube} material={new THREE.MeshMatcapMaterial({matcap : blanc})} geometry={nodes.switchGeom_0.geometry} />
         <mesh 
         material={new THREE.MeshMatcapMaterial({matcap : rouge})} 
         geometry={nodes.switchGeom_1.geometry} 

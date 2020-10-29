@@ -5,11 +5,12 @@ import useStore from "../store/zstore";
 export default function Camera() {
   const { camera } = useThree();
   const e = useStore(state => state.position)
-  camera.fov = 100;
 
   useFrame(() => {
-    camera.position.set(e[0] + 10, e[1] + 15, e[2] + 10);
-    camera.lookAt(e[0], e[1] + 8, e[2]);
+    camera.position.set(e[0] , e[1]+5 , e[2] + 10);
+    camera.lookAt(e[0], e[1] + 5, e[2]);
+    camera.fov = 50;
+    camera.updateProjectionMatrix();
    // window.camera = camera;
   });
 

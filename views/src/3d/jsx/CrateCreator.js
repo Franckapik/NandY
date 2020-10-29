@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import { useLoader, useThree } from 'react-three-fiber'
 import {useSelector} from 'react-redux';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useBox } from 'use-cannon'
+import { useBox } from 'use-cannon2'
 import useStore from '../../store/zstore';
 
 export default function CrateCreator(props) {

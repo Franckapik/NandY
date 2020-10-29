@@ -7,14 +7,14 @@ const changeRotation = useStore(state => state.changeRotation)
 
 useHotkeys('up', event => {
   if (event.type === "keydown") {
-    changeForce('-5')
+    changeForce('-3')
   } else if (event.type === 'keyup') {
     changeForce('0')
   } 
 }, { keyup: true});
 useHotkeys('down', event => {
   if (event.type === "keydown") {
-    changeForce('5')
+    changeForce('3')
     } else if (event.type === 'keyup') {
     changeForce('0')
     } 

@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { useSelector } from "react-redux";
 import { useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { useBox } from 'use-cannon';
+import { useBox } from 'use-cannon2';
 import useStore from "../store/zstore";
 export const CrateList = () => {
 

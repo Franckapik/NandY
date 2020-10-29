@@ -1,5 +1,5 @@
 import React from "react";
-import { usePlane } from "use-cannon";
+import { usePlane } from "use-cannon2";
 
 export default function Plane(props) {
   const [plane, api2] = usePlane(() => ({ 
