@@ -7,7 +7,7 @@ import React, { useRef, useEffect} from 'react'
 import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import useStore from '../../store/zstore'
-import { useBox } from 'use-cannon2'
+import { useBox } from 'use-cannon'
 
 
 

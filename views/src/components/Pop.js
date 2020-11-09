@@ -1,6 +1,5 @@
 import React from "react";
 import Modal from "react-modal";
-import { useSelector } from "react-redux";
 import useStore from "../store/zstore";
 
 const customStyles = {
@@ -22,8 +21,8 @@ export default function Pop({ children, title }) {
   const isOpen = useStore(state => state.popOpen)
   const togglePop = useStore(state => state.togglePop)
 
-  function openModal() {
-  }
+ /* function openModal() {
+  }*/
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.

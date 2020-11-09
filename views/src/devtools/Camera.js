@@ -1,5 +1,4 @@
 import { useFrame, useThree } from "react-three-fiber";
-import { useSelector } from "react-redux";
 import useStore from "../store/zstore";
 
 export default function Camera() {

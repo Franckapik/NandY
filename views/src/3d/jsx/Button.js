@@ -1,19 +1,16 @@
-import * as THREE from 'three'
-import React, { useRef } from 'react'
-import { useLoader, useThree } from 'react-three-fiber'
-import {useSelector} from 'react-redux';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useBox } from 'use-cannon2'
-import useStore from '../../store/zstore'
+import React from 'react';
+import { useLoader } from 'react-three-fiber';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { useBox } from 'use-cannon';
+import useStore from '../../store/zstore';
 
 export default function Button(props) {
-  const group = useRef()
-  const { nodes, materials } = useLoader(GLTFLoader, '/all.gltf')
+  const { nodes } = useLoader(GLTFLoader, '/all.gltf')
   const changeContent = useStore(state => state.changeContent)
   const togglePop = useStore(state => state.togglePop)
-  const crates = useStore(state => state.crates)
-  const [beige, blanc, bleu, gris, jaune, marron, noir, orange, rouge, turquoise, vert] = useLoader(THREE.TextureLoader, ['./matcaps/beige.png','./matcaps/blanc.png','./matcaps/bleu.png','./matcaps/gris.png','./matcaps/jaune.png','./matcaps/marron.png','./matcaps/noir.png','./matcaps/orange.png','./matcaps/rouge.png','./matcaps/turquoise.png','./matcaps/vert.png'])
-  const [cube, api] = useBox(() => ({
+  const [ blanc, rouge] = useLoader(THREE.TextureLoader, ['./matcaps/beige.png','./matcaps/blanc.png','./matcaps/bleu.png','./matcaps/gris.png','./matcaps/jaune.png','./matcaps/marron.png','./matcaps/noir.png','./matcaps/orange.png','./matcaps/rouge.png','./matcaps/turquoise.png','./matcaps/vert.png'])
+  const [cube] = useBox(() => ({
     mass: 1,
     args : [2,2,2],
     position: props.position,

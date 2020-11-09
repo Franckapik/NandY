@@ -1,3 +1,5 @@
 node_modules/
 views/src/3d/blend/
 views/src/3d/gltf/
+*.glb
+*.gltf

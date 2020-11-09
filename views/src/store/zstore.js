@@ -16,6 +16,7 @@ const useStore = create((set) => ({
     targetIA: [25,0,25],
     orbit: false,
     videoPos : [0,0,0],
+    characterPos : [0,0,0],
     entitymanager : [],
     inc: () => set((state) => ({ count: state.count + 1 })),
     changeContent: (newContent) => set(() => ({content: newContent})),

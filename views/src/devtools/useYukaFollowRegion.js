@@ -1,20 +1,16 @@
 //https://github.com/Mugen87/yuka/blob/master/examples/navigation/navmesh/index.html#L122
 //https://github.com/Mugen87/yuka/blob/master/examples/navigation/navmeshPerformance/index.html
 
-import React, { useRef, useEffect, useState, useContext, createContext } from 'react'
-import * as THREE from "three";
-import { useFrame } from 'react-three-fiber'
-import { GameEntity, EntityManager, SeekBehavior, Vector3, FollowPathBehavior, NavMeshLoader, NavMesh } from 'yuka'
-import useStore from '../store/zstore'
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { useFrame } from 'react-three-fiber';
+import { EntityManager, FollowPathBehavior, GameEntity, NavMesh, NavMeshLoader } from 'yuka';
   
   const context = createContext()
 
   function findPathTo(target, vehicle, nav) {
-    const path = nav.findPath( vehicle.position, target.position );
+    let path = nav.findPath( vehicle.position, target.position );
     if(nav.regions.lenght) { // ne fonctionne pas encore ici
-      console.log(vehicle.navMesh.getRandomRegion());
       const newTarget = vehicle.navMesh.getRandomRegion()
-
       path = nav.findPath( vehicle.position, newTarget.centroid ); //troisieme argument pour une fonction onPathFound(changer de cible)
     }
 
@@ -23,9 +19,7 @@ import useStore from '../store/zstore'
     followPathBehavior.path.clear();
     
     for ( const point of path ) {
-      console.log(point);
       followPathBehavior.path.add( point );
-
     }
 
   }
@@ -34,10 +28,14 @@ import useStore from '../store/zstore'
     const [nav, setNav] = React.useState(new NavMesh());
     const loader = new NavMeshLoader();
 
-    useEffect(async () => {
-      const newNav = await loader.load(url);
-      setNav(newNav);
-    }, []);
+    useEffect(() => {
+      async function fetchData() {
+        const newNav = await loader.load(url);
+        setNav(newNav);  
+      }
+      fetchData();
+    }, [url, loader]);
+
     return nav;
   }
     
@@ -54,7 +52,6 @@ import useStore from '../store/zstore'
 
       const vehicle = mgr.entities.find((item) => item.name === 'Vehicle')
       const target = mgr.entities.find((item) => item.name === 'Target')
-      console.log(navi);
       window.navi = navi;
       const followPathBehavior = new FollowPathBehavior() 
       followPathBehavior.nextWaypointDistance = 0.5;
@@ -91,7 +88,7 @@ import useStore from '../store/zstore'
       })
       mgr.add(entity)
       return () => mgr.remove(entity)
-    }, [])
+    }, [entity, mgr, name, position])
     return [ref, entity]
   }
   

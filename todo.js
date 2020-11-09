@@ -1,6 +1,3 @@
-const { useYuka } = require("./views/src/devtools/useYuka")
-const { default: store } = require("./views/src/store/store")
-
 Changelog
 v1.0.1
 Socket.io mis en place (interaction ok)
@@ -39,10 +36,21 @@ Pouvoir appliquer de la physics à des meshs disposant de plusieurs materials.
 Creation de useYukaSeek vers targetCreation de useYukaWander dans une région donnée.
 Creation de useYukaFollowRegion (mais sans la function getRandomRegion qui ne semble pas fonctionner)
 
+v1.0.3
+Attention aux updates de react-hotkeys-hooks et r3f
+
 
 
 
 Travail à faire :
+changer de version jusqu'à la v5!!
+
+Comment avoir un use-cannon avec les bonding box, le master et le raycast vehicle ?
+Forker un use-cannon pour l'utiliser spécifiquement pour le jeu? Difficile de connaitre les pratiques de git pour les diffs de fichiers à gerer.
+Essayer d'ajouter le raycast vehicle sur la v5.
+
+
+
 -Choisir le bon comportement des budies.
 Est-ce qu'il court après une cible changeante (empty) ou bien ils se déplacent sur un navmesh de manière aléatoire.
 Aparemment, il faut accorder un comportement à l'entité puis ensuite ajouter dans le update(delta) des logiques de collisions selon le navmesh.
@@ -58,3 +66,5 @@ Differents comportements disponibles qui permetent le mouvement de cubes sur un 
 -Répartition aléatoire d'éléments ordinaires.
 -evolution du paysage au fur et à mesure du parcours. défoncé -> jardin.
 -commencer a concevoir le joueur
+
+shift alt o pour retirer les imports non used

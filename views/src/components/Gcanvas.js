@@ -1,33 +1,27 @@
-import React, { Suspense } from "react";
-import Plane from "../3d/jsx/Plane.js";
-import Joueur from "../3d/jsx/Joueur";
-import { Physics } from "use-cannon2";
-import Camera from "../devtools/Camera";
-import PanneauInfos from "../3d/jsx/PanneauInfos";
 import { HTML, Sky } from "drei";
-import All from "../3d/jsx/All";
-import {Active, CollisionBlocks, NavMesh, Passive} from "../3d/jsx/All2";
-import {Traversant} from "../3d/jsx/All2";
+import React, { Suspense } from "react";
+import { Canvas, useFrame, useLoader } from "react-three-fiber";
 import { Controls, useControl } from "react-three-gui";
-import Video from "./Video";
-import Radio from "../3d/jsx/Radio";
-import CrateCreator from "../3d/jsx/CrateCreator";
-import { CrateList } from "./CrateList";
-import MsgList from "../3d/jsx/MsgList";
-import Button from "../3d/jsx/Button";
-import IdeaList from "../3d/jsx/IdeaList";
-import { useFrame } from "react-three-fiber";
-import { useLoader } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import useStore from '../store/zstore'
-import PopList from "./PopList.js";
-import { Canvas } from 'react-three-fiber';
-import Budie from '../3d/jsx/Budie';
-import Brick from "../3d/jsx/Brick.js";
+import { Physics } from "use-cannon";
+import { Active, CollisionBlocks, NavMesh, Passive, Traversant } from "../3d/jsx/All2";
+import Button from "../3d/jsx/Button";
+import CrateCreator from "../3d/jsx/CrateCreator";
+import IdeaList from "../3d/jsx/IdeaList";
+import Joueur from "../3d/jsx/Joueur";
+import MsgList from "../3d/jsx/MsgList";
+import PanneauInfos from "../3d/jsx/PanneauInfos";
+import Plane from "../3d/jsx/Plane.js";
+import Radio from "../3d/jsx/Radio";
 import Sol from "../3d/jsx/Sol.js";
 import Town from "../3d/jsx/Town.js";
-import {VehicleMesh, TargetMesh} from "../3d/jsx/TryYuka.js";
-import { Manager } from '../devtools/useYukaFollowRegion.js'
+import { TargetMesh, VehicleMesh } from "../3d/jsx/TryYuka.js";
+import Camera from "../devtools/Camera";
+import { Manager } from '../devtools/useYukaFollowRegion.js';
+import useStore from '../store/zstore';
+import { CrateList } from "./CrateList";
+import PopList from "./PopList.js";
+import Video from "./Video";
 
 
 

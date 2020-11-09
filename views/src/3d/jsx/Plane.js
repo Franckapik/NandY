@@ -1,8 +1,8 @@
 import React from "react";
-import { usePlane } from "use-cannon2";
+import { usePlane } from "use-cannon";
 
 export default function Plane(props) {
-  const [plane, api2] = usePlane(() => ({ 
+  const [plane] = usePlane(() => ({ 
     position : [0,-0.5,0],
     rotation: [-Math.PI / 2, 0, 0] }));
 

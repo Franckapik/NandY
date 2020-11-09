@@ -1,5 +1,5 @@
 import React from "react";
-import { useBox } from "use-cannon2";
+import { useBox } from "use-cannon";
 import { useLoader } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 export const BrickWall = (props) => {

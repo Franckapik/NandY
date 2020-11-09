@@ -1,7 +1,6 @@
 import {useEffect} from 'react'
 import {useFrame} from 'react-three-fiber'
-import {useSphere} from 'use-cannon2'
-import { useSelector } from "react-redux";
+import {useSphere} from 'use-cannon'
 import { VertexNormalsHelper } from "three/examples/jsm/helpers/VertexNormalsHelper"
 import { useHelper } from "drei"
 import useStore from '../store/zstore';
@@ -9,7 +8,7 @@ import useStore from '../store/zstore';
 
 
 
-export default function useMouvement() {
+export default function useMouvement(position) { 
 
   let force = useStore(state => state.force)
   let rotation = useStore(state => state.rotation)
@@ -18,7 +17,7 @@ export default function useMouvement() {
 
 
   const [ref, api] = useSphere(() => ({
-    position : [0,3,0],
+    position : [-6,4,70], //how to retrieve characterPos in glb file?
     type: "dynamic",
     mass: 10,
     radius : 2,
@@ -38,6 +37,7 @@ export default function useMouvement() {
   useFrame(() => {
     //api.position.set(1,1,1)   
    api.applyImpulse([rotation,0,force], [0,1,0]);
+   window.v = position;
   }
 
 );
@@ -47,14 +47,14 @@ useEffect(
     api.position.subscribe((position) =>
     changePosition(position)
     ),
-  []
+  [api, changePosition]
 );
 useEffect(
   () =>
     api.velocity.subscribe((velocity) =>
     changeVelocity(velocity)
     ),
-  []
+  [api, changeVelocity]
 );
 
  return ref

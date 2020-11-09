@@ -1,23 +1,20 @@
 import { draco } from "drei"
-import React, { useRef } from 'react'
+import React from 'react'
 import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useBox } from 'use-cannon2'
-import { useNav, useNavLoader } from "../../devtools/useYukaFollowRegion"
+import { useBox } from 'use-cannon'
 import { createConvexRegionHelper } from '../../devtools/createConvexRegionHelper.js'
+import { useNavLoader } from "../../devtools/useYukaFollowRegion"
 
 
 
 export function Passive(props) {
-  const { nodes, materials } = useLoader(GLTFLoader, '/passive.glb', draco())
+  const { nodes } = useLoader(GLTFLoader, '/passive.glb', draco())
   const first = Object.keys(nodes)
-  console.log(nodes);
-  console.log(first[0]);
   return (
     Object.entries(nodes).map(
       ([name, obj]) => {
         let bound = [2,2,2];
-
         if(obj.type==='Group' && obj.name !== first[0]) {
           return (<GroupMesh mass={0} key={name} position={obj.getWorldPosition()} {...obj} />)
         }
@@ -31,15 +28,16 @@ export function Passive(props) {
           }
         }
         else {
-          console.log(name);
-        }         
+//do nothing
+        }  
+        return null       //a verifier si erreur
     }
   )
   )
 }
 
 export function Active(props) {
-  const { nodes, materials } = useLoader(GLTFLoader, '/active.glb', draco())
+  const { nodes } = useLoader(GLTFLoader, '/active.glb', draco())
   const first = Object.keys(nodes)
   return (
     Object.entries(nodes).map(
@@ -57,14 +55,15 @@ export function Active(props) {
             bound = [b.max.x, b.max.y, b.max.z]
             return <ObjMesh mass={10} display={true} key={name} bound={bound} {...obj} position={obj.getWorldPosition()}  />  
           }
-        }         
+        }
+        return null         
     }
   )
   )
 }
 
 export function CollisionBlocks(props) {
-  const { nodes, materials } = useLoader(GLTFLoader, '/collisionBlocks.glb', draco())
+  const { nodes } = useLoader(GLTFLoader, '/collisionBlocks.glb', draco())
   return (
     Object.entries(nodes).map(
       ([name, obj]) => {
@@ -84,13 +83,13 @@ export function CollisionBlocks(props) {
 }
 
 export function Traversant(props) {
-  const { nodes, materials } = useLoader(GLTFLoader, '/traversant.glb', draco())
+  const { nodes } = useLoader(GLTFLoader, '/traversant.glb', draco())
 
   return (
     Object.entries(nodes).map(
       ([name, obj]) => {
         return (
-          <mesh material={obj.material} geometry={obj.geometry} position={obj.getWorldPosition()} />
+          <mesh key={name} material={obj.material} geometry={obj.geometry} position={obj.getWorldPosition()} />
       )
 
     }
@@ -109,9 +108,8 @@ export function NavMesh(props) {
 const ObjMesh = ({position,bound,display,mass,...props}) => {
 
   const v = position;
-  const b = bound;
 
-  const [cube, api] = useBox(() => ({
+  const [cube] = useBox(() => ({
     mass: mass,
     args: bound,
     position: [v.x,v.y,v.z],
@@ -127,7 +125,7 @@ const GroupMesh = ({position,children,mass,...props}) => {
 
   const v = position;
   
-const [cube, api] = useBox(() => ({
+const [cube] = useBox(() => ({
   mass: mass,
   args: [1,1,1], //trouver le moyen de regler le bound
   position: [v.x,v.y,v.z],
@@ -138,7 +136,7 @@ const [cube, api] = useBox(() => ({
 {          Object.entries(children).map(
       ([name, obj]) => {
         return (
-          <mesh material={obj.material} geometry={obj.geometry} />
+          <mesh key={name} material={obj.material} geometry={obj.geometry} />
       )
     }
   )}

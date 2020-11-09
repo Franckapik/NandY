@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useUpdate } from 'react-three-fiber'
 
 const Video = React.memo((props) => {
@@ -19,7 +19,7 @@ const Video = React.memo((props) => {
   }, [props.url])
 
   // video.play is a side-effect, this should be an effect
-  useEffect(() => void video.play(), [props.url])
+  useEffect(() => void video.play(), [props.url, video])
 
   // This effect scales meshes once (on mount)
   const geom = useUpdate(ref => ref.scale(-1, 1, 1), [])

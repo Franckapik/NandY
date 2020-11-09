@@ -1,7 +1,6 @@
-import { Box, Sphere } from 'drei'
 import React from 'react'
-import { Canvas, useUpdate } from 'react-three-fiber'
-import { Vehicle, GameEntity, MovingEntity } from 'yuka'
+import { useUpdate } from 'react-three-fiber'
+import { Vehicle, GameEntity } from 'yuka'
 import { useYuka } from '../../devtools/useYukaFollowRegion.js'
 
 function VehicleMesh(props) {
@@ -19,14 +18,14 @@ function VehicleMesh(props) {
   )
 }
 
-function WandererMesh(props) {
+/*function WandererMesh(props) {
   const [ref] = useYuka({ type: MovingEntity, ...props })
   return(
     <Sphere ref={ref}>
   <meshBasicMaterial attach="material" color="hotpink" />
     </Sphere>
   )
-}
+}*/
 
 
 
