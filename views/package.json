@@ -27,7 +27,7 @@
     "react-three-gui": "^0.3.1",
     "redux": "^4.0.5",
     "socket.io-client": "^2.3.0",
-    "three": "^0.120.1",
+    "three": "^0.125.0",
     "use-cannon": "^0.4.2",
     "use-cannon2": "github:pmndrs/use-cannon#experimental/bounding-boxes",
     "yuka": "^0.3.7",
