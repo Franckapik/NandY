@@ -12,7 +12,7 @@
     "drei": "^1.5.7",
     "immer": "^7.0.9",
     "lerp": "^1.0.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dat-gui": "^4.0.3",
     "react-dom": "^16.13.1",
